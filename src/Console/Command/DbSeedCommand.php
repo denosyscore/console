@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console\Command;
+namespace Denosys\Console\Command;
 
-use CFXP\Core\Console\CommandDefinition;
-use CFXP\Core\Console\CommandInterface;
-use CFXP\Core\Console\InputInterface;
-use CFXP\Core\Console\OutputInterface;
-use CFXP\Core\Database\Seeding\SeederRunner;
-use CFXP\Core\Database\Seeding\SeederInterface;
+use Denosys\Console\CommandDefinition;
+use Denosys\Console\CommandInterface;
+use Denosys\Console\InputInterface;
+use Denosys\Console\OutputInterface;
+use Denosys\Database\Seeding\SeederRunner;
+use Denosys\Database\Seeding\SeederInterface;
 
 /**
  * Run database seeders.

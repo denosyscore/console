@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console\Command;
+namespace Denosys\Console\Command;
 
-use CFXP\Core\Bootstrap\Configuration\RoutesConfiguration;
-use CFXP\Core\Console\CommandDefinition;
-use CFXP\Core\Console\CommandInterface;
-use CFXP\Core\Console\InputInterface;
-use CFXP\Core\Console\OutputInterface;
-use CFXP\Core\Container\ContainerInterface;
-use CFXP\Core\Routing\RouteCache;
-use CFXP\Core\Routing\RouteLoader;
+use Denosys\Bootstrap\Configuration\RoutesConfiguration;
+use Denosys\Console\CommandDefinition;
+use Denosys\Console\CommandInterface;
+use Denosys\Console\InputInterface;
+use Denosys\Console\OutputInterface;
+use Denosys\Container\ContainerInterface;
+use Denosys\Routing\RouteCache;
+use Denosys\Routing\RouteLoader;
 use Denosys\Routing\Dispatcher;
 use Denosys\Routing\MiddlewareRegistry;
 use Denosys\Routing\RouteCollection;

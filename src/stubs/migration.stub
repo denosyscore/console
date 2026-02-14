@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use CFXP\Core\Database\Migration\MigrationInterface;
-use CFXP\Core\Database\Migration\MigrationTrait;
-use CFXP\Core\Database\Schema\Blueprint;
-use CFXP\Core\Database\Schema\ColumnType;
-use CFXP\Core\Database\Schema\SchemaBuilder;
+use Denosys\Database\Migration\MigrationInterface;
+use Denosys\Database\Migration\MigrationTrait;
+use Denosys\Database\Schema\Blueprint;
+use Denosys\Database\Schema\ColumnType;
+use Denosys\Database\Schema\SchemaBuilder;
 
 return new class implements MigrationInterface {
     use MigrationTrait;

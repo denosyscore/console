@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console\Adapter;
+namespace Denosys\Console\Adapter;
 
-use CFXP\Core\Console\InputInterface;
+use Denosys\Console\InputInterface;
 use Symfony\Component\Console\Input\InputInterface as SymfonyInput;
 
 /**

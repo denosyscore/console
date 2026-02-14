@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use CFXP\Core\Console\CommandDefinition;
-use CFXP\Core\Console\CommandInterface;
-use CFXP\Core\Console\InputInterface;
-use CFXP\Core\Console\OutputInterface;
+use Denosys\Console\CommandDefinition;
+use Denosys\Console\CommandInterface;
+use Denosys\Console\InputInterface;
+use Denosys\Console\OutputInterface;
 
 /**
  * {{ description }}

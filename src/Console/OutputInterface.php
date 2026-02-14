@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console;
+namespace Denosys\Console;
 
 /**
  * Abstraction over command output.

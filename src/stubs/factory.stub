@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use CFXP\Core\Database\Factory\Factory;
+use Denosys\Database\Factory\Factory;
 
 /**
  * Factory for {{modelName}} model.

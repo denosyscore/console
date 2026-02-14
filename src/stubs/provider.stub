@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
-use CFXP\Core\Container\Container;
-use CFXP\Core\ServiceProviderInterface;
+use Denosys\Container\Container;
+use Denosys\Contracts\ServiceProviderInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
 class {{ class }} implements ServiceProviderInterface

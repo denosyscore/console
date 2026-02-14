@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console\Command;
+namespace Denosys\Console\Command;
 
-use CFXP\Core\Console\CommandDefinition;
-use CFXP\Core\Console\CommandInterface;
-use CFXP\Core\Console\InputInterface;
-use CFXP\Core\Console\OutputInterface;
-use CFXP\Core\Container\ContainerInterface;
+use Denosys\Console\CommandDefinition;
+use Denosys\Console\CommandInterface;
+use Denosys\Console\InputInterface;
+use Denosys\Console\OutputInterface;
+use Denosys\Container\ContainerInterface;
 use RuntimeException;
 
 class StartupBenchmarkCommand implements CommandInterface

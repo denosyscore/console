@@ -6,15 +6,15 @@
   "require": {
     "php": "^8.2",
     "symfony/console": "^7.4",
-    "denosyscore/contracts": "^0.1",
-    "denosyscore/container": "^0.1",
-    "denosyscore/database": "^0.1",
-    "denosyscore/http": "^0.1",
-    "denosyscore/queue": "^0.1"
+    "denosyscore/contracts": "^0.2",
+    "denosyscore/container": "^0.2",
+    "denosyscore/database": "^0.2",
+    "denosyscore/http": "^0.2",
+    "denosyscore/queue": "^0.2"
   },
   "autoload": {
     "psr-4": {
-      "CFXP\\Core\\": "src/"
+      "Denosys\\\\Console\\\\": "src/Console/"
     }
   },
   "config": {

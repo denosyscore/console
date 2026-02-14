@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console\Adapter;
+namespace Denosys\Console\Adapter;
 
-use CFXP\Core\Console\CommandDefinition;
-use CFXP\Core\Console\CommandInterface;
+use Denosys\Console\CommandDefinition;
+use Denosys\Console\CommandInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface as SymfonyInput;

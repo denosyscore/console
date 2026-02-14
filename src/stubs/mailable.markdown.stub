@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
-use CFXP\Core\Mail\Mailable;
+use Denosys\Mail\Mailable;
 
 /**
  * {{ subject }} mailable with markdown support.

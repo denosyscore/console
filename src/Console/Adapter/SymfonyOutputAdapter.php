@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console\Adapter;
+namespace Denosys\Console\Adapter;
 
-use CFXP\Core\Console\OutputInterface;
-use CFXP\Core\Console\ProgressBar;
+use Denosys\Console\OutputInterface;
+use Denosys\Console\ProgressBar;
 use Symfony\Component\Console\Helper\ProgressBar as SymfonyProgressBar;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\QuestionHelper;

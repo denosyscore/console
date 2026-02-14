@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console;
+namespace Denosys\Console;
 
-use CFXP\Core\Console\Adapter\SymfonyCommandAdapter;
-use CFXP\Core\Container\ContainerInterface;
+use Denosys\Console\Adapter\SymfonyCommandAdapter;
+use Denosys\Container\ContainerInterface;
 use Symfony\Component\Console\Application as SymfonyApplication;
 
 /**
@@ -31,7 +31,7 @@ class Application
 
     public function __construct(
         private readonly ContainerInterface $container,
-        string $name = 'CFXP Console',
+        string $name = 'Denosys Console',
         string $version = '1.0.0',
     ) {
         $this->symfonyApp = new SymfonyApplication($name, $version);

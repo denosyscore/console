@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console;
+namespace Denosys\Console;
 
-use CFXP\Core\Container\ContainerInterface;
+use Denosys\Container\ContainerInterface;
 
 /**
  * Base console kernel with auto-discovery.
@@ -52,33 +52,33 @@ abstract class Kernel
      * @var array<class-string<CommandInterface>>
      */
     protected array $coreCommands = [
-        \CFXP\Core\Console\Command\MigrateCommand::class,
-        \CFXP\Core\Console\Command\MigrateRollbackCommand::class,
-        \CFXP\Core\Console\Command\MigrateStatusCommand::class,
-        \CFXP\Core\Console\Command\MigrateFreshCommand::class,
-        \CFXP\Core\Console\Command\MakeMigrationCommand::class,
-        \CFXP\Core\Console\Command\MakeControllerCommand::class,
-        \CFXP\Core\Console\Command\MakeModelCommand::class,
-        \CFXP\Core\Console\Command\MakeProviderCommand::class,
-        \CFXP\Core\Console\Command\MakeCommandCommand::class,
-        \CFXP\Core\Console\Command\MakeMiddlewareCommand::class,
-        \CFXP\Core\Console\Command\MakeRequestCommand::class,
-        \CFXP\Core\Console\Command\MakeFactoryCommand::class,
-        \CFXP\Core\Console\Command\MakeSeederCommand::class,
-        \CFXP\Core\Console\Command\MakeMailCommand::class,
-        \CFXP\Core\Console\Command\DbSeedCommand::class,
-        \CFXP\Core\Console\Command\StubsPublishCommand::class,
-        \CFXP\Core\Console\Command\QueueWorkCommand::class,
-        \CFXP\Core\Console\Command\ConfigCacheCommand::class,
-        \CFXP\Core\Console\Command\ConfigClearCommand::class,
-        \CFXP\Core\Console\Command\RoutesCacheCommand::class,
-        \CFXP\Core\Console\Command\RoutesClearCommand::class,
-        \CFXP\Core\Console\Command\ContainerWarmupCommand::class,
-        \CFXP\Core\Console\Command\ContainerClearCommand::class,
-        \CFXP\Core\Console\Command\OptimizeCommand::class,
-        \CFXP\Core\Console\Command\OptimizeClearCommand::class,
-        \CFXP\Core\Console\Command\StartupBenchmarkCommand::class,
-        \CFXP\Core\Console\Command\ViewClearCommand::class,
+        \Denosys\Console\Command\MigrateCommand::class,
+        \Denosys\Console\Command\MigrateRollbackCommand::class,
+        \Denosys\Console\Command\MigrateStatusCommand::class,
+        \Denosys\Console\Command\MigrateFreshCommand::class,
+        \Denosys\Console\Command\MakeMigrationCommand::class,
+        \Denosys\Console\Command\MakeControllerCommand::class,
+        \Denosys\Console\Command\MakeModelCommand::class,
+        \Denosys\Console\Command\MakeProviderCommand::class,
+        \Denosys\Console\Command\MakeCommandCommand::class,
+        \Denosys\Console\Command\MakeMiddlewareCommand::class,
+        \Denosys\Console\Command\MakeRequestCommand::class,
+        \Denosys\Console\Command\MakeFactoryCommand::class,
+        \Denosys\Console\Command\MakeSeederCommand::class,
+        \Denosys\Console\Command\MakeMailCommand::class,
+        \Denosys\Console\Command\DbSeedCommand::class,
+        \Denosys\Console\Command\StubsPublishCommand::class,
+        \Denosys\Console\Command\QueueWorkCommand::class,
+        \Denosys\Console\Command\ConfigCacheCommand::class,
+        \Denosys\Console\Command\ConfigClearCommand::class,
+        \Denosys\Console\Command\RoutesCacheCommand::class,
+        \Denosys\Console\Command\RoutesClearCommand::class,
+        \Denosys\Console\Command\ContainerWarmupCommand::class,
+        \Denosys\Console\Command\ContainerClearCommand::class,
+        \Denosys\Console\Command\OptimizeCommand::class,
+        \Denosys\Console\Command\OptimizeClearCommand::class,
+        \Denosys\Console\Command\StartupBenchmarkCommand::class,
+        \Denosys\Console\Command\ViewClearCommand::class,
     ];
 
     public function __construct(
@@ -93,7 +93,7 @@ abstract class Kernel
      */
     public function bootstrap(): Application
     {
-        $console = new Application($this->container, 'CFXP Console', '1.0.0');
+        $console = new Application($this->container, 'Denosys Console', '1.0.0');
 
         // Register core framework commands
         foreach ($this->coreCommands as $commandClass) {

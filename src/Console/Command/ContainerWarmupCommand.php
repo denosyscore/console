@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console\Command;
+namespace Denosys\Console\Command;
 
-use CFXP\Core\Console\CommandDefinition;
-use CFXP\Core\Console\CommandInterface;
-use CFXP\Core\Console\InputInterface;
-use CFXP\Core\Console\OutputInterface;
-use CFXP\Core\Container\ContainerInterface;
+use Denosys\Console\CommandDefinition;
+use Denosys\Console\CommandInterface;
+use Denosys\Console\InputInterface;
+use Denosys\Console\OutputInterface;
+use Denosys\Container\ContainerInterface;
 use RuntimeException;
 use Throwable;
 
@@ -119,12 +119,12 @@ class ContainerWarmupCommand implements CommandInterface
             throw new RuntimeException("Compiled container file was not created: {$cacheFile}");
         }
 
-        $compiledClass = 'CFXP\\Core\\Container\\Compiled\\CompiledContainer';
+        $compiledClass = 'Denosys\\Container\\Compiled\\CompiledContainer';
         if (!class_exists($compiledClass, false)) {
             require_once $cacheFile;
         }
 
-        if (!class_exists($compiledClass) || !is_subclass_of($compiledClass, \CFXP\Core\Container\Container::class)) {
+        if (!class_exists($compiledClass) || !is_subclass_of($compiledClass, \Denosys\Container\Container::class)) {
             throw new RuntimeException(
                 "Compiled container class [{$compiledClass}] is missing or invalid in {$cacheFile}"
             );

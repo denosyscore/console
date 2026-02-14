@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console\Adapter;
+namespace Denosys\Console\Adapter;
 
-use CFXP\Core\Console\ProgressBar;
+use Denosys\Console\ProgressBar;
 use Symfony\Component\Console\Helper\ProgressBar as SymfonyProgressBar;
 
 /**

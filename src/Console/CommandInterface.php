@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Console;
+namespace Denosys\Console;
 
 /**
  * Contract for console commands using composition.
