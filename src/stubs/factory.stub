@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Database\Factories;
+
+use CFXP\Core\Database\Factory\Factory;
+
+/**
+ * Factory for {{modelName}} model.
+ * 
+ * Model inferred from class name: {{class}} -> App\Models\{{modelName}}
+ * To override, set: protected ?string $model = YourModel::class;
+ */
+class {{class}} extends Factory
+{
+    // Uncomment to explicitly set model instead of inferring:
+    // protected ?string $model = {{modelClass}}::class;
+
+    /**
+     * Define the model's default state.
+     */
+    public function definition(): array
+    {
+        return [
+            // 'name' => $this->faker->name(),
+            // 'email' => $this->faker->safeEmail(),
+        ];
+    }
+
+    // Define custom states as methods:
+    //
+    // public function admin(): static
+    // {
+    //     return $this->state(['role' => 'admin']);
+    // }
+}

@@ -1,0 +1,10 @@
+# {{ subject }}
+
+Hello,
+
+This is an email message.
+
+---
+
+Best regards,
+The **{{ config('app.name') }}** Team

@@ -1,0 +1,49 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Console\Commands;
+
+use CFXP\Core\Console\CommandDefinition;
+use CFXP\Core\Console\CommandInterface;
+use CFXP\Core\Console\InputInterface;
+use CFXP\Core\Console\OutputInterface;
+
+/**
+ * {{ description }}
+ */
+class {{ class }} implements CommandInterface
+{
+    public function getName(): string
+    {
+        return '{{ command_name }}';
+    }
+
+    public function getDescription(): string
+    {
+        return '{{ description }}';
+    }
+
+    public function configure(): CommandDefinition
+    {
+        return (new CommandDefinition())
+            // ->addArgument('arg', CommandDefinition::ARGUMENT_REQUIRED, 'Description')
+            // ->addOption('opt', 'o', CommandDefinition::OPTION_OPTIONAL, 'Description')
+            ->setHelp(<<<HELP
+{{ description }}
+
+Examples:
+  php cfxp {{ command_name }}
+HELP);
+    }
+
+    public function execute(InputInterface $input, OutputInterface $output): int
+    {
+        $output->info('Executing {{ class }}...');
+
+        // Your command logic here
+
+        $output->success('Done!');
+        return 0;
+    }
+}

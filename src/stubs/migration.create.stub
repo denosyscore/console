@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+use CFXP\Core\Database\Migration\MigrationInterface;
+use CFXP\Core\Database\Migration\MigrationTrait;
+use CFXP\Core\Database\Schema\Blueprint;
+use CFXP\Core\Database\Schema\ColumnType;
+use CFXP\Core\Database\Schema\SchemaBuilder;
+
+return new class implements MigrationInterface {
+    use MigrationTrait;
+
+    public function up(SchemaBuilder $schema): void
+    {
+        $schema->create('{{ table }}', function (Blueprint $table) {
+            $table->id();
+            // Add your columns here
+            $table->timestamps();
+        });
+    }
+
+    public function down(SchemaBuilder $schema): void
+    {
+        $schema->dropIfExists('{{ table }}');
+    }
+};

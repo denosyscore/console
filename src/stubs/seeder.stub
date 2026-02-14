@@ -1,0 +1,40 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Database\Seeders;
+
+use CFXP\Core\Database\Seeding\Seeder;
+
+/**
+ * Database seeder.
+ */
+class {{class}} extends Seeder
+{
+    /**
+     * Seed the database.
+     */
+    public function run(): void
+    {
+        // Use factories to create data:
+        // UserFactory::new()->create(10);
+        //
+        // Or insert directly:
+        // $this->insert('users', [
+        //     'email' => 'admin@example.com',
+        //     'name' => 'Admin User',
+        // ]);
+    }
+
+    /**
+     * Seeders that must run before this one.
+     * 
+     * @return array<class-string<SeederInterface>>
+     */
+    public function getDependencies(): array
+    {
+        return [
+            // UserSeeder::class,
+        ];
+    }
+}

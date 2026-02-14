@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use CFXP\Core\Container\Container;
+use CFXP\Core\ServiceProviderInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
+
+class {{ class }} implements ServiceProviderInterface
+{
+    /**
+     * Register any application services.
+     */
+    public function register(Container $container): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(Container $container, ?EventDispatcherInterface $dispatcher = null): void
+    {
+        //
+    }
+}

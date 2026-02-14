@@ -1,0 +1,31 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use CFXP\Core\Mail\Mailable;
+
+/**
+ * {{ subject }} mailable with markdown support.
+ */
+class {{ class }} extends Mailable
+{
+    /**
+     * Create a new mailable instance.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Build the message.
+     */
+    public function build(): static
+    {
+        return $this
+            ->subject('{{ subject }}')
+            ->markdown('{{ view }}');
+    }
+}
