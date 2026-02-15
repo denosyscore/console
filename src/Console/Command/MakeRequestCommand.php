@@ -40,8 +40,8 @@ class MakeRequestCommand implements CommandInterface
 Creates a new form request class for validation.
 
 Examples:
-  php cfxp make:request StoreUserRequest
-  php cfxp make:request Api/UpdateProfileRequest
+  php denosys make:request StoreUserRequest
+  php denosys make:request Api/UpdateProfileRequest
 HELP);
     }
 

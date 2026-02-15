@@ -53,14 +53,14 @@ class StubsPublishCommand implements CommandInterface
 Publishes stubs to your application's stubs/ directory for customization.
 
 Usage:
-  php cfxp stubs:publish              # Publish ALL stubs
-  php cfxp stubs:publish migration    # Publish only migration stubs
-  php cfxp stubs:publish controller   # Publish only controller stubs
-  php cfxp stubs:publish model        # Publish only model stub
-  php cfxp stubs:publish provider     # Publish only provider stub
-  php cfxp stubs:publish command      # Publish only command stub
-  php cfxp stubs:publish middleware   # Publish only middleware stub
-  php cfxp stubs:publish request      # Publish only request stub
+  php denosys stubs:publish              # Publish ALL stubs
+  php denosys stubs:publish migration    # Publish only migration stubs
+  php denosys stubs:publish controller   # Publish only controller stubs
+  php denosys stubs:publish model        # Publish only model stub
+  php denosys stubs:publish provider     # Publish only provider stub
+  php denosys stubs:publish command      # Publish only command stub
+  php denosys stubs:publish middleware   # Publish only middleware stub
+  php denosys stubs:publish request      # Publish only request stub
 
 Available types:
   migration   - Migration stubs (blank, create, update)

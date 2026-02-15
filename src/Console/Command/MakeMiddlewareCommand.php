@@ -40,8 +40,8 @@ class MakeMiddlewareCommand implements CommandInterface
 Creates a new middleware class.
 
 Examples:
-  php cfxp make:middleware CheckAgeMiddleware
-  php cfxp make:middleware Api/EnsureTokenIsValidMiddleware
+  php denosys make:middleware CheckAgeMiddleware
+  php denosys make:middleware Api/EnsureTokenIsValidMiddleware
 HELP);
     }
 

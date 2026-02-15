@@ -42,10 +42,10 @@ class MigrateCommand implements CommandInterface
 Run all pending database migrations.
 
 Examples:
-  php cfxp migrate                    # Run migrations
-  php cfxp migrate --seed             # Run migrations then DatabaseSeeder
-  php cfxp migrate --seed=UserSeeder  # Run migrations then specific seeder
-  php cfxp migrate --pretend          # Show SQL without running
+  php denosys migrate                    # Run migrations
+  php denosys migrate --seed             # Run migrations then DatabaseSeeder
+  php denosys migrate --seed=UserSeeder  # Run migrations then specific seeder
+  php denosys migrate --pretend          # Show SQL without running
 HELP);
     }
 

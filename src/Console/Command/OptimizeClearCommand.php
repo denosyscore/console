@@ -30,7 +30,7 @@ class OptimizeClearCommand implements CommandInterface
     public function configure(): CommandDefinition
     {
         return (new CommandDefinition())
-            ->addOption('entry', null, CommandDefinition::OPTION_OPTIONAL, 'Path to console entry script', 'cfxp')
+            ->addOption('entry', null, CommandDefinition::OPTION_OPTIONAL, 'Path to console entry script', 'denosys')
             ->setHelp(<<<HELP
 Clear framework startup caches in reverse-safe order.
 
@@ -44,7 +44,7 @@ HELP);
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $basePath = $this->resolveBasePath();
-        $entryScript = $this->resolveEntryScript((string) ($input->getOption('entry') ?: 'cfxp'), $basePath);
+        $entryScript = $this->resolveEntryScript((string) ($input->getOption('entry') ?: 'denosys'), $basePath);
         $phpBinary = \PHP_BINARY !== '' ? \PHP_BINARY : 'php';
 
         $steps = ['container:clear', 'routes:clear', 'config:clear'];
@@ -106,7 +106,7 @@ HELP);
     private function resolveEntryScript(string $entry, string $basePath): string
     {
         if ($entry === '') {
-            return $basePath . '/cfxp';
+            return $basePath . '/denosys';
         }
 
         if (str_starts_with($entry, '/')) {

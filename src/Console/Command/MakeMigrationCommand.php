@@ -42,11 +42,11 @@ class MakeMigrationCommand implements CommandInterface
 Creates a new database migration file.
 
 Examples:
-  php cfxp make:migration CreateUsersTable --create=users
-  php cfxp make:migration AddEmailToUsers --table=users
-  php cfxp make:migration UpdatePaymentSettings
+  php denosys make:migration CreateUsersTable --create=users
+  php denosys make:migration AddEmailToUsers --table=users
+  php denosys make:migration UpdatePaymentSettings
 
-To customize templates, run: php cfxp stubs:publish
+To customize templates, run: php denosys stubs:publish
 HELP);
     }
 

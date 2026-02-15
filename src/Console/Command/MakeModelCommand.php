@@ -44,10 +44,10 @@ class MakeModelCommand implements CommandInterface
 Creates a new model class.
 
 Examples:
-  php cfxp make:model Post
-  php cfxp make:model Post -m              # With migration
-  php cfxp make:model Post -mc             # With migration and controller
-  php cfxp make:model Post --all           # Model, migration, resource controller
+  php denosys make:model Post
+  php denosys make:model Post -m              # With migration
+  php denosys make:model Post -mc             # With migration and controller
+  php denosys make:model Post --all           # Model, migration, resource controller
 HELP);
     }
 

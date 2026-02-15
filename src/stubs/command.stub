@@ -33,7 +33,7 @@ class {{ class }} implements CommandInterface
 {{ description }}
 
 Examples:
-  php cfxp {{ command_name }}
+  php denosys {{ command_name }}
 HELP);
     }
 

@@ -42,9 +42,9 @@ class QueueWorkCommand implements CommandInterface
 Start processing jobs from the queue.
 
 Examples:
-  php cfxp queue:work                    # Process jobs continuously
-  php cfxp queue:work --once             # Process one job then exit
-  php cfxp queue:work --queue=emails     # Process specific queue
+  php denosys queue:work                    # Process jobs continuously
+  php denosys queue:work --once             # Process one job then exit
+  php denosys queue:work --queue=emails     # Process specific queue
 HELP);
     }
 

@@ -32,8 +32,8 @@ class StartupBenchmarkCommand implements CommandInterface
         return (new CommandDefinition())
             ->addOption('runs', null, CommandDefinition::OPTION_OPTIONAL, 'Measured runs per scenario', '20')
             ->addOption('warmups', null, CommandDefinition::OPTION_OPTIONAL, 'Warmup runs per scenario', '3')
-            ->addOption('command', null, CommandDefinition::OPTION_OPTIONAL, 'Command to benchmark (without "php cfxp")', 'list --raw')
-            ->addOption('entry', null, CommandDefinition::OPTION_OPTIONAL, 'Path to console entry script', 'cfxp')
+            ->addOption('command', null, CommandDefinition::OPTION_OPTIONAL, 'Command to benchmark (without "php denosys")', 'list --raw')
+            ->addOption('entry', null, CommandDefinition::OPTION_OPTIONAL, 'Path to console entry script', 'denosys')
             ->addOption('compare-cache', null, CommandDefinition::OPTION_NONE, 'Run uncached and cached scenarios back-to-back')
             ->addOption('min-improvement', null, CommandDefinition::OPTION_OPTIONAL, 'Require at least this % improvement when using --compare-cache')
             ->addOption('max-average-ms', null, CommandDefinition::OPTION_OPTIONAL, 'Fail if any scenario average exceeds this value (ms)')
@@ -43,12 +43,12 @@ class StartupBenchmarkCommand implements CommandInterface
 Benchmark framework startup time by running the CLI in a separate process.
 
 Examples:
-  php cfxp benchmark:startup
-  php cfxp benchmark:startup --compare-cache
-  php cfxp benchmark:startup --runs=30 --warmups=5 --command="list --raw"
-  php cfxp benchmark:startup --compare-cache --min-improvement=3.0
-  php cfxp benchmark:startup --compare-cache --max-average-ms=120 --max-p95-ms=180
-  php cfxp benchmark:startup --compare-cache --output=storage/core/cache/startup-benchmark.json
+  php denosys benchmark:startup
+  php denosys benchmark:startup --compare-cache
+  php denosys benchmark:startup --runs=30 --warmups=5 --command="list --raw"
+  php denosys benchmark:startup --compare-cache --min-improvement=3.0
+  php denosys benchmark:startup --compare-cache --max-average-ms=120 --max-p95-ms=180
+  php denosys benchmark:startup --compare-cache --output=storage/core/cache/startup-benchmark.json
 HELP);
     }
 
@@ -72,7 +72,7 @@ HELP);
         }
 
         $basePath = $this->resolveBasePath();
-        $entryScript = $this->resolveEntryScript((string) ($input->getOption('entry') ?: 'cfxp'), $basePath);
+        $entryScript = $this->resolveEntryScript((string) ($input->getOption('entry') ?: 'denosys'), $basePath);
         $phpBinary = \PHP_BINARY !== '' ? \PHP_BINARY : 'php';
 
         $output->info(sprintf(
@@ -430,7 +430,7 @@ HELP);
             array_shift($tokens);
         }
 
-        if ($tokens !== [] && (basename($tokens[0]) === 'cfxp' || $tokens[0] === 'cfxp')) {
+        if ($tokens !== [] && (basename($tokens[0]) === 'denosys' || $tokens[0] === 'denosys')) {
             array_shift($tokens);
         }
 
@@ -440,7 +440,7 @@ HELP);
     private function resolveEntryScript(string $entry, string $basePath): string
     {
         if ($entry === '') {
-            return $basePath . '/cfxp';
+            return $basePath . '/denosys';
         }
 
         if (str_starts_with($entry, '/')) {

@@ -39,9 +39,9 @@ class DbSeedCommand implements CommandInterface
 Runs database seeders to populate the database with test/initial data.
 
 Examples:
-  php cfxp db:seed                           # Run DatabaseSeeder
-  php cfxp db:seed --class=UserSeeder        # Run specific seeder
-  php cfxp db:seed -c UserSeeder             # Short form
+  php denosys db:seed                           # Run DatabaseSeeder
+  php denosys db:seed --class=UserSeeder        # Run specific seeder
+  php denosys db:seed -c UserSeeder             # Short form
 HELP);
     }
 
