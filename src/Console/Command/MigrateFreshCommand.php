@@ -41,9 +41,9 @@ class MigrateFreshCommand implements CommandInterface
 Drop all tables and re-run all migrations.
 
 Examples:
-  php denosys migrate:fresh                    # Fresh migration
-  php denosys migrate:fresh --seed             # Fresh migration then DatabaseSeeder
-  php denosys migrate:fresh --seed=UserSeeder  # Fresh migration then specific seeder
+  php core migrate:fresh                    # Fresh migration
+  php core migrate:fresh --seed             # Fresh migration then DatabaseSeeder
+  php core migrate:fresh --seed=UserSeeder  # Fresh migration then specific seeder
 HELP);
     }
 

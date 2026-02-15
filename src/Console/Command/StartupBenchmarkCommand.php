@@ -43,12 +43,12 @@ class StartupBenchmarkCommand implements CommandInterface
 Benchmark framework startup time by running the CLI in a separate process.
 
 Examples:
-  php denosys benchmark:startup
-  php denosys benchmark:startup --compare-cache
-  php denosys benchmark:startup --runs=30 --warmups=5 --command="list --raw"
-  php denosys benchmark:startup --compare-cache --min-improvement=3.0
-  php denosys benchmark:startup --compare-cache --max-average-ms=120 --max-p95-ms=180
-  php denosys benchmark:startup --compare-cache --output=storage/core/cache/startup-benchmark.json
+  php core benchmark:startup
+  php core benchmark:startup --compare-cache
+  php core benchmark:startup --runs=30 --warmups=5 --command="list --raw"
+  php core benchmark:startup --compare-cache --min-improvement=3.0
+  php core benchmark:startup --compare-cache --max-average-ms=120 --max-p95-ms=180
+  php core benchmark:startup --compare-cache --output=storage/core/cache/startup-benchmark.json
 HELP);
     }
 
@@ -466,7 +466,7 @@ HELP);
             }
         }
 
-        return rtrim($basePath, '/') . '/denosys';
+        return rtrim($basePath, '/') . '/core';
     }
 
     private function toAbsolutePath(string $path, string $basePath): string

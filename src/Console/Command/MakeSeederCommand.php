@@ -39,8 +39,8 @@ class MakeSeederCommand implements CommandInterface
 Creates a new database seeder file.
 
 Examples:
-  php denosys make:seeder UserSeeder
-  php denosys make:seeder DatabaseSeeder
+  php core make:seeder UserSeeder
+  php core make:seeder DatabaseSeeder
 HELP);
     }
 

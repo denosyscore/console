@@ -42,11 +42,11 @@ class MakeMigrationCommand implements CommandInterface
 Creates a new database migration file.
 
 Examples:
-  php denosys make:migration CreateUsersTable --create=users
-  php denosys make:migration AddEmailToUsers --table=users
-  php denosys make:migration UpdatePaymentSettings
+  php core make:migration CreateUsersTable --create=users
+  php core make:migration AddEmailToUsers --table=users
+  php core make:migration UpdatePaymentSettings
 
-To customize templates, run: php denosys stubs:publish
+To customize templates, run: php core stubs:publish
 HELP);
     }
 

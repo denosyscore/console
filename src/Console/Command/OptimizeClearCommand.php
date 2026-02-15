@@ -128,7 +128,7 @@ HELP);
             }
         }
 
-        return rtrim($basePath, '/') . '/denosys';
+        return rtrim($basePath, '/') . '/core';
     }
 
     private function toAbsolutePath(string $path, string $basePath): string

@@ -33,7 +33,7 @@ class {{ class }} implements CommandInterface
 {{ description }}
 
 Examples:
-  php denosys {{ command_name }}
+  php core {{ command_name }}
 HELP);
     }
 

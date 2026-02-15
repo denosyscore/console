@@ -40,8 +40,8 @@ class MakeFactoryCommand implements CommandInterface
 Creates a new model factory file.
 
 Examples:
-  php denosys make:factory UserFactory
-  php denosys make:factory UserFactory --model=App\\Models\\User
+  php core make:factory UserFactory
+  php core make:factory UserFactory --model=App\\Models\\User
 HELP);
     }
 

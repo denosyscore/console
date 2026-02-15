@@ -40,8 +40,8 @@ class MakeProviderCommand implements CommandInterface
 Creates a new service provider class.
 
 Examples:
-  php denosys make:provider PaymentServiceProvider
-  php denosys make:provider EventServiceProvider
+  php core make:provider PaymentServiceProvider
+  php core make:provider EventServiceProvider
 HELP);
     }
 

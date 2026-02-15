@@ -42,9 +42,9 @@ class MakeControllerCommand implements CommandInterface
 Creates a new controller class.
 
 Examples:
-  php denosys make:controller UserController
-  php denosys make:controller PostController --resource
-  php denosys make:controller Api/V1/ProductController --api
+  php core make:controller UserController
+  php core make:controller PostController --resource
+  php core make:controller Api/V1/ProductController --api
 HELP);
     }
 

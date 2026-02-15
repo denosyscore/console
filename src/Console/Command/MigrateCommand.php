@@ -42,10 +42,10 @@ class MigrateCommand implements CommandInterface
 Run all pending database migrations.
 
 Examples:
-  php denosys migrate                    # Run migrations
-  php denosys migrate --seed             # Run migrations then DatabaseSeeder
-  php denosys migrate --seed=UserSeeder  # Run migrations then specific seeder
-  php denosys migrate --pretend          # Show SQL without running
+  php core migrate                    # Run migrations
+  php core migrate --seed             # Run migrations then DatabaseSeeder
+  php core migrate --seed=UserSeeder  # Run migrations then specific seeder
+  php core migrate --pretend          # Show SQL without running
 HELP);
     }
 

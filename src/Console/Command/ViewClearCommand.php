@@ -36,7 +36,7 @@ class ViewClearCommand implements CommandInterface
 Clears all compiled view template files from the cache directory.
 
 Examples:
-  php denosys view:clear
+  php core view:clear
 HELP);
     }
 

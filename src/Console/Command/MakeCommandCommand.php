@@ -41,8 +41,8 @@ class MakeCommandCommand implements CommandInterface
 Creates a new console command class.
 
 Examples:
-  php denosys make:command SendEmailsCommand
-  php denosys make:command CleanupCommand --command=cleanup:old-files
+  php core make:command SendEmailsCommand
+  php core make:command CleanupCommand --command=cleanup:old-files
 HELP);
     }
 
@@ -86,7 +86,7 @@ HELP);
         $output->comment("Path: " . $this->relativePath($path));
         $output->newLine();
         $output->writeln("Command is auto-discovered. Run it with:");
-        $output->writeln("  <info>php denosys {$commandName}</info>");
+        $output->writeln("  <info>php core {$commandName}</info>");
 
         return 0;
     }

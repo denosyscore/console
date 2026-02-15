@@ -42,10 +42,10 @@ class MakeMailCommand implements CommandInterface
 Creates a new mailable class.
 
 Examples:
-  php denosys make:mail WelcomeEmail
-  php denosys make:mail WelcomeEmail --view         # With view template
-  php denosys make:mail WelcomeEmail --markdown     # With markdown support
-  php denosys make:mail Order/OrderConfirmation     # Nested namespace
+  php core make:mail WelcomeEmail
+  php core make:mail WelcomeEmail --view         # With view template
+  php core make:mail WelcomeEmail --markdown     # With markdown support
+  php core make:mail Order/OrderConfirmation     # Nested namespace
 HELP);
     }
 
