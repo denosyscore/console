@@ -30,7 +30,7 @@ class OptimizeClearCommand implements CommandInterface
     public function configure(): CommandDefinition
     {
         return (new CommandDefinition())
-            ->addOption('entry', null, CommandDefinition::OPTION_OPTIONAL, 'Path to console entry script', 'denosys')
+            ->addOption('entry', null, CommandDefinition::OPTION_OPTIONAL, 'Path to console entry script')
             ->setHelp(<<<HELP
 Clear framework startup caches in reverse-safe order.
 
@@ -44,7 +44,8 @@ HELP);
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $basePath = $this->resolveBasePath();
-        $entryScript = $this->resolveEntryScript((string) ($input->getOption('entry') ?: 'denosys'), $basePath);
+        $entryOption = $input->getOption('entry');
+        $entryScript = $this->resolveEntryScript(is_string($entryOption) ? trim($entryOption) : '', $basePath);
         $phpBinary = \PHP_BINARY !== '' ? \PHP_BINARY : 'php';
 
         $steps = ['container:clear', 'routes:clear', 'config:clear'];
@@ -106,14 +107,50 @@ HELP);
     private function resolveEntryScript(string $entry, string $basePath): string
     {
         if ($entry === '') {
-            return $basePath . '/denosys';
+            return $this->detectCurrentEntryScript($basePath);
         }
 
-        if (str_starts_with($entry, '/')) {
-            return $entry;
+        return $this->toAbsolutePath($entry, $basePath);
+    }
+
+    private function detectCurrentEntryScript(string $basePath): string
+    {
+        $argv = $_SERVER['argv'] ?? null;
+
+        if (is_array($argv) && isset($argv[0]) && is_string($argv[0])) {
+            $script = trim($argv[0]);
+
+            if ($script !== '') {
+                $resolved = $this->toAbsolutePath($script, $basePath);
+                if (is_file($resolved)) {
+                    return $resolved;
+                }
+            }
         }
 
-        return rtrim($basePath, '/') . '/' . ltrim($entry, '/');
+        return rtrim($basePath, '/') . '/denosys';
+    }
+
+    private function toAbsolutePath(string $path, string $basePath): string
+    {
+        if ($this->isAbsolutePath($path)) {
+            return $path;
+        }
+
+        return rtrim($basePath, '/') . '/' . ltrim($path, '/');
+    }
+
+    private function isAbsolutePath(string $path): bool
+    {
+        if ($path === '') {
+            return false;
+        }
+
+        if (str_starts_with($path, '/') || str_starts_with($path, '\\')) {
+            return true;
+        }
+
+        return (bool) preg_match('/^[A-Za-z]:[\\\\\\/]/', $path);
     }
 
     private function resolveBasePath(): string

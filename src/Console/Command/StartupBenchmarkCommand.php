@@ -32,8 +32,8 @@ class StartupBenchmarkCommand implements CommandInterface
         return (new CommandDefinition())
             ->addOption('runs', null, CommandDefinition::OPTION_OPTIONAL, 'Measured runs per scenario', '20')
             ->addOption('warmups', null, CommandDefinition::OPTION_OPTIONAL, 'Warmup runs per scenario', '3')
-            ->addOption('command', null, CommandDefinition::OPTION_OPTIONAL, 'Command to benchmark (without "php denosys")', 'list --raw')
-            ->addOption('entry', null, CommandDefinition::OPTION_OPTIONAL, 'Path to console entry script', 'denosys')
+            ->addOption('command', null, CommandDefinition::OPTION_OPTIONAL, 'Command to benchmark (without "php <entry>")', 'list --raw')
+            ->addOption('entry', null, CommandDefinition::OPTION_OPTIONAL, 'Path to console entry script')
             ->addOption('compare-cache', null, CommandDefinition::OPTION_NONE, 'Run uncached and cached scenarios back-to-back')
             ->addOption('min-improvement', null, CommandDefinition::OPTION_OPTIONAL, 'Require at least this % improvement when using --compare-cache')
             ->addOption('max-average-ms', null, CommandDefinition::OPTION_OPTIONAL, 'Fail if any scenario average exceeds this value (ms)')
@@ -59,20 +59,25 @@ HELP);
         $runs = max(1, (int) (($rawRuns === null || $rawRuns === '') ? 20 : $rawRuns));
         $warmups = max(0, (int) (($rawWarmups === null || $rawWarmups === '') ? 3 : $rawWarmups));
         $compareCache = (bool) $input->getOption('compare-cache');
-        $targetCommand = $this->normalizeTargetCommand((string) ($input->getOption('command') ?: 'list --raw'));
         $rawOutputPath = trim((string) ($input->getOption('output') ?: ''));
         $outputPath = $rawOutputPath !== '' ? $rawOutputPath : null;
         $minImprovement = $this->parseOptionalFloat($input->getOption('min-improvement'));
         $maxAverageMs = $this->parseOptionalFloat($input->getOption('max-average-ms'));
         $maxP95Ms = $this->parseOptionalFloat($input->getOption('max-p95-ms'));
 
+        $basePath = $this->resolveBasePath();
+        $entryOption = $input->getOption('entry');
+        $entryScript = $this->resolveEntryScript(is_string($entryOption) ? trim($entryOption) : '', $basePath);
+        $targetCommand = $this->normalizeTargetCommand(
+            (string) ($input->getOption('command') ?: 'list --raw'),
+            basename($entryScript)
+        );
+
         if ($targetCommand === []) {
             $output->error('Target command is empty. Provide a valid command with --command.');
             return 1;
         }
 
-        $basePath = $this->resolveBasePath();
-        $entryScript = $this->resolveEntryScript((string) ($input->getOption('entry') ?: 'denosys'), $basePath);
         $phpBinary = \PHP_BINARY !== '' ? \PHP_BINARY : 'php';
 
         $output->info(sprintf(
@@ -417,7 +422,7 @@ HELP);
     /**
      * @return array<int, string>
      */
-    private function normalizeTargetCommand(string $raw): array
+    private function normalizeTargetCommand(string $raw, string $entryBasename): array
     {
         $tokens = preg_split('/\s+/', trim($raw)) ?: [];
         $tokens = array_values(array_filter($tokens, static fn(string $token): bool => $token !== ''));
@@ -430,7 +435,7 @@ HELP);
             array_shift($tokens);
         }
 
-        if ($tokens !== [] && (basename($tokens[0]) === 'denosys' || $tokens[0] === 'denosys')) {
+        if ($entryBasename !== '' && $tokens !== [] && (basename($tokens[0]) === $entryBasename || $tokens[0] === $entryBasename)) {
             array_shift($tokens);
         }
 
@@ -440,14 +445,50 @@ HELP);
     private function resolveEntryScript(string $entry, string $basePath): string
     {
         if ($entry === '') {
-            return $basePath . '/denosys';
+            return $this->detectCurrentEntryScript($basePath);
         }
 
-        if (str_starts_with($entry, '/')) {
-            return $entry;
+        return $this->toAbsolutePath($entry, $basePath);
+    }
+
+    private function detectCurrentEntryScript(string $basePath): string
+    {
+        $argv = $_SERVER['argv'] ?? null;
+
+        if (is_array($argv) && isset($argv[0]) && is_string($argv[0])) {
+            $script = trim($argv[0]);
+
+            if ($script !== '') {
+                $resolved = $this->toAbsolutePath($script, $basePath);
+                if (is_file($resolved)) {
+                    return $resolved;
+                }
+            }
         }
 
-        return rtrim($basePath, '/') . '/' . ltrim($entry, '/');
+        return rtrim($basePath, '/') . '/denosys';
+    }
+
+    private function toAbsolutePath(string $path, string $basePath): string
+    {
+        if ($this->isAbsolutePath($path)) {
+            return $path;
+        }
+
+        return rtrim($basePath, '/') . '/' . ltrim($path, '/');
+    }
+
+    private function isAbsolutePath(string $path): bool
+    {
+        if ($path === '') {
+            return false;
+        }
+
+        if (str_starts_with($path, '/') || str_starts_with($path, '\\')) {
+            return true;
+        }
+
+        return (bool) preg_match('/^[A-Za-z]:[\\\\\\/]/', $path);
     }
 
     private function resolveOutputPath(string $outputPath, string $basePath): string
