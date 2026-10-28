@@ -240,6 +240,13 @@ abstract class Kernel
      */
     protected function resolveCommand(string $commandClass): CommandInterface
     {
+        if (is_subclass_of($commandClass, LazyCommandInterface::class)) {
+            return new LazyCommandProxy(
+                $commandClass,
+                fn (): CommandInterface => $this->instantiateCommand($commandClass),
+            );
+        }
+
         return $this->instantiateCommand($commandClass);
     }
 
