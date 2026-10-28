@@ -10,7 +10,7 @@
     "denosyscore/container": "^0.2",
     "denosyscore/database": "^0.2",
     "denosyscore/http": "^0.2",
-    "denosyscore/queue": "dev-codex/job-runtime-services as 0.3.x-dev"
+    "denosyscore/queue": "dev-codex/database-queue-reservations as 0.3.x-dev"
   },
   "autoload": {
     "psr-4": {
