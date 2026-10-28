@@ -29,7 +29,7 @@ final class DeferredCommand implements LazyCommandInterface
     public static function commandDescription(): string { return 'Check deferred resolution'; }
     public static function commandDefinition(): CommandDefinition
     {
-        return new CommandDefinition()->addOption('value', null, CommandDefinition::OPTION_REQUIRED, 'A test value');
+        return (new CommandDefinition())->addOption('value', null, CommandDefinition::OPTION_REQUIRED, 'A test value');
     }
 
     public function getName(): string { return self::commandName(); }
