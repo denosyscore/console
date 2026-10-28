@@ -10,6 +10,7 @@ use Denosys\Console\InputInterface;
 use Denosys\Console\OutputInterface;
 use Denosys\Container\ContainerInterface;
 use Denosys\Queue\Driver\DatabaseQueue;
+use Denosys\Queue\JobRunner;
 use Denosys\Queue\QueueManager;
 
 /**
@@ -61,6 +62,7 @@ HELP);
 
         $queueManager = $this->container->get(QueueManager::class);
         $queue = $queueManager->connection();
+        $runner = new JobRunner($this->container);
 
         while (true) {
             $jobData = $queue->pop($queueName);
@@ -83,7 +85,7 @@ HELP);
             $output->write("[" . date('Y-m-d H:i:s') . "] Processing: {$displayName}...");
 
             try {
-                $job->handle();
+                $runner->run($job);
                 $queue->delete($id);
                 $output->writeln(" <fg=green>DONE</>");
             } catch (\Throwable $e) {

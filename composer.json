@@ -10,14 +10,26 @@
     "denosyscore/container": "^0.2",
     "denosyscore/database": "^0.2",
     "denosyscore/http": "^0.2",
-    "denosyscore/queue": "^0.2"
+    "denosyscore/queue": "dev-codex/job-runtime-services as 0.3.x-dev"
   },
   "autoload": {
     "psr-4": {
       "Denosys\\Console\\": "src/Console/"
     }
   },
+  "scripts": {
+    "test": "phpunit --bootstrap vendor/autoload.php tests"
+  },
   "config": {
     "sort-packages": true
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/denosyscore/queue"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^10.5"
   }
 }
