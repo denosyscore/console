@@ -69,7 +69,7 @@ final class LazyCommandRegistrationTest extends TestCase
 {
     public function testExistingCommandsRemainRegisteredWithoutMetadata(): void
     {
-        $console = new LegacyTestKernel(new Container(), __DIR__)->bootstrap();
+        $console = (new LegacyTestKernel(new Container(), __DIR__))->bootstrap();
 
         self::assertInstanceOf(LegacyCommand::class, $console->getCommands()['legacy:check']);
     }
@@ -83,7 +83,7 @@ final class LazyCommandRegistrationTest extends TestCase
 
             return new DeferredResource();
         });
-        $console = new DeferredTestKernel($container, __DIR__)->bootstrap();
+        $console = (new DeferredTestKernel($container, __DIR__))->bootstrap();
         self::assertSame(0, $resolutions);
 
         $symfony = $console->getSymfonyApplication();
