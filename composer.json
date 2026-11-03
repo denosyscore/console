@@ -10,7 +10,7 @@
     "denosyscore/container": "^0.2",
     "denosyscore/database": "^0.2",
     "denosyscore/http": "^0.2",
-    "denosyscore/queue": "^0.2"
+    "denosyscore/queue": "^0.3"
   },
   "autoload": {
     "psr-4": {

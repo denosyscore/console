@@ -15,6 +15,13 @@ composer require denosyscore/console
 - src/Console/*
 - src/stubs/*
 
+## Database queue worker
+
+`queue:work` executes popped jobs through `denosyscore/queue`'s `JobRunner`.
+This supplies the bootstrapped container to `ContainerAwareJob` payloads and
+continues to call `handle()` on existing jobs. The runner requires queue 0.3's
+runtime-service contract.
+
 ## Lazy command registration
 
 Commands that depend on resources unavailable during console startup can
