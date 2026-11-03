@@ -35,7 +35,7 @@ class MigrateCommand implements CommandInterface
     public function configure(): CommandDefinition
     {
         return (new CommandDefinition())
-            ->addOption('pretend', null, CommandDefinition::OPTION_NONE, 'Dump the SQL queries without running them')
+            ->addOption('pretend', null, CommandDefinition::OPTION_NONE, 'List pending migrations without applying them')
             ->addOption('force', null, CommandDefinition::OPTION_NONE, 'Force in production')
             ->addOption('seed', null, CommandDefinition::OPTION_OPTIONAL, 'Run seeders after migration (optionally specify class)', false)
             ->setHelp(<<<HELP
@@ -45,7 +45,7 @@ Examples:
   php core migrate                    # Run migrations
   php core migrate --seed             # Run migrations then DatabaseSeeder
   php core migrate --seed=UserSeeder  # Run migrations then specific seeder
-  php core migrate --pretend          # Show SQL without running
+  php core migrate --pretend          # List pending migrations without changes
 HELP);
     }
 
@@ -55,30 +55,39 @@ HELP);
         $force = $input->getOption('force');
         $seed = $input->getOption('seed');
 
+        if ($pretend && $seed !== false) {
+            $output->error('Cannot seed while previewing migrations.');
+            return 2;
+        }
+
         // Safety check for production
-        if (!$force && $this->isProduction()) {
+        if (!$pretend && !$force && $this->isProduction()) {
             if (!$output->confirm('Are you sure you want to run migrations in production?')) {
                 $output->warning('Migration cancelled.');
                 return 0;
             }
         }
 
-        $output->info('Running migrations...');
+        $output->info($pretend ? 'Previewing pending migrations...' : 'Running migrations...');
 
+        $migrator = $this->migrator();
         if ($pretend) {
-            $this->migrator()->pretend();
+            $migrator->pretend();
         }
 
-        $result = $this->migrator()->run();
+        $result = $migrator->run();
 
         if ($result->isEmpty()) {
-            $output->comment('Nothing to migrate.');
+            $output->comment($pretend ? 'No pending migrations. No changes made.' : 'Nothing to migrate.');
         } else {
             foreach ($result->getMigrations() as $record) {
-                $time = number_format($record->time * 1000, 2);
-                
                 if ($record->success) {
-                    $output->writeln("<info>  ✓ {$record->name}</info> ({$time}ms)");
+                    if ($pretend) {
+                        $output->writeln("<info>  Would run: {$record->name}</info>");
+                    } else {
+                        $time = number_format($record->time * 1000, 2);
+                        $output->writeln("<info>  ✓ {$record->name}</info> ({$time}ms)");
+                    }
                 } else {
                     $output->writeln("<error>  ✗ {$record->name}: {$record->error}</error>");
                 }
@@ -87,15 +96,23 @@ HELP);
             $output->newLine();
             
             if ($result->isSuccess()) {
-                $output->success(sprintf(
-                    'Ran %d migration(s) in %.2f seconds.',
-                    $result->count(),
-                    $result->getTotalTime()
-                ));
+                if ($pretend) {
+                    $output->success(sprintf('%d migration(s) pending. No changes made.', $result->count()));
+                } else {
+                    $output->success(sprintf(
+                        'Ran %d migration(s) in %.2f seconds.',
+                        $result->count(),
+                        $result->getTotalTime()
+                    ));
+                }
             } else {
                 $output->error('Migration failed: ' . $result->getError());
                 return 1;
             }
+        }
+
+        if ($pretend) {
+            return 0;
         }
 
         // Run seeders if requested (--seed or --seed=ClassName)
