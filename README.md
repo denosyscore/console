@@ -19,9 +19,8 @@ composer require denosyscore/console
 
 `queue:work` executes popped jobs through `denosyscore/queue`'s `JobRunner`.
 This supplies the bootstrapped container to `ContainerAwareJob` payloads and
-continues to call `handle()` on existing jobs. The runner requires the queue
-package's proposed 0.3 runtime-service contract. The development branch in
-Composer is temporary until that contract is released.
+continues to call `handle()` on existing jobs. The runner requires queue 0.3's
+runtime-service contract.
 
 ## Lazy command registration
 
