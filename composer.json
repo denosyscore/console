@@ -18,7 +18,7 @@
     }
   },
   "scripts": {
-    "test": "phpunit --bootstrap vendor/autoload.php tests/MigratePreviewCommandTest.php"
+    "test": "phpunit --bootstrap vendor/autoload.php tests"
   },
   "config": {
     "sort-packages": true
