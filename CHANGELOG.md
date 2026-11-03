@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased (proposed 0.3.1)
+
+- Accept database and HTTP 0.3 while retaining support for their 0.2 lines.
+- Test published old and new dependency combinations on PHP 8.2 and 8.5.
+
 ## Unreleased (proposed 0.3.0)
 
 - Report migration previews as pending work without claiming migrations ran
