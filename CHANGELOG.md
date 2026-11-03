@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased (proposed 0.3.1)
+## Unreleased (proposed 0.3.2)
+
+- Accept database 0.4 while retaining the supported 0.2 and 0.3 lines.
+- Test database 0.4 with compatible HTTP and queue releases in CI.
+
+## 0.3.1
 
 - Accept database and HTTP 0.3 while retaining support for their 0.2 lines.
 - Test published old and new dependency combinations on PHP 8.2 and 8.5.

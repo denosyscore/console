@@ -17,6 +17,8 @@ jobs:
           - { php: '8.5', database: '0.2.3', http: '0.2.2', queue: '0.3.0' }
           - { php: '8.2', database: '0.3.0', http: '0.3.0', queue: '0.3.1' }
           - { php: '8.5', database: '0.3.0', http: '0.3.0', queue: '0.3.1' }
+          - { php: '8.2', database: '0.4.0', http: '0.3.1', queue: '0.3.2' }
+          - { php: '8.5', database: '0.4.0', http: '0.3.1', queue: '0.3.2' }
     steps:
       - name: Checkout
         uses: actions/checkout@v4
