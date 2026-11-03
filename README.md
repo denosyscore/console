@@ -19,9 +19,15 @@ composer require denosyscore/console
 
 `migrate --pretend` lists pending migration names and reports that no changes
 were made. It does not compile SQL. Combining `--pretend` with `--seed` fails
-before any migration or seeder runs. This command requires the database
-package's read-only pretend-mode correction; the development branch in
-Composer is temporary until a compatible release is available.
+before any migration or seeder runs. This command requires database 0.2.3's
+read-only pretend-mode correction.
+
+## Database queue worker
+
+`queue:work` executes popped jobs through `denosyscore/queue`'s `JobRunner`.
+This supplies the bootstrapped container to `ContainerAwareJob` payloads and
+continues to call `handle()` on existing jobs. The runner requires queue 0.3's
+runtime-service contract.
 
 ## Lazy command registration
 
