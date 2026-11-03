@@ -9,6 +9,14 @@ on:
 jobs:
   quality:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { php: '8.2', database: '0.2.3', http: '0.2.2', queue: '0.3.0' }
+          - { php: '8.5', database: '0.2.3', http: '0.2.2', queue: '0.3.0' }
+          - { php: '8.2', database: '0.3.0', http: '0.3.0', queue: '0.3.1' }
+          - { php: '8.5', database: '0.3.0', http: '0.3.0', queue: '0.3.1' }
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -16,14 +24,16 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: ${{ matrix.php }}
           coverage: none
 
       - name: Validate composer.json
         run: composer validate --strict
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-interaction --no-progress
+        run: |
+          composer require --no-update --no-interaction 'denosyscore/database:${{ matrix.database }}' 'denosyscore/http:${{ matrix.http }}' 'denosyscore/queue:${{ matrix.queue }}'
+          composer install --prefer-dist --no-interaction --no-progress
 
       - name: Run tests
         run: composer test

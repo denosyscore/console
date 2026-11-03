@@ -8,8 +8,8 @@
     "symfony/console": "^7.4",
     "denosyscore/contracts": "^0.2",
     "denosyscore/container": "^0.2",
-    "denosyscore/database": "^0.2.3",
-    "denosyscore/http": "^0.2",
+    "denosyscore/database": "^0.2.3 || ^0.3",
+    "denosyscore/http": "^0.2 || ^0.3",
     "denosyscore/queue": "^0.3"
   },
   "autoload": {

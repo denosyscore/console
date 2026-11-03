@@ -81,6 +81,9 @@ composer test
 
 ## Releases
 
+CI tests both published database/HTTP combinations with their compatible
+queue releases on PHP 8.2 and 8.5.
+
 After CI passes on `main`, create an annotated semantic version tag from that
 reviewed commit and push the tag. The Release workflow publishes a GitHub
 Release. Confirm the matching version is available in the Composer package
