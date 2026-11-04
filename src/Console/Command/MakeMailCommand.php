@@ -10,7 +10,7 @@ use Denosys\Console\InputInterface;
 use Denosys\Console\OutputInterface;
 
 /**
- * Generate a new mailable class.
+ * Generate a Symfony email message class.
  */
 class MakeMailCommand implements CommandInterface
 {
@@ -28,23 +28,21 @@ class MakeMailCommand implements CommandInterface
 
     public function getDescription(): string
     {
-        return 'Create a new mailable class';
+        return 'Create a new email message class';
     }
 
     public function configure(): CommandDefinition
     {
         return (new CommandDefinition())
-            ->addArgument('name', CommandDefinition::ARGUMENT_REQUIRED, 'The name of the mailable')
-            ->addOption('view', null, CommandDefinition::OPTION_NONE, 'Also create an email view template')
-            ->addOption('markdown', 'm', CommandDefinition::OPTION_NONE, 'Create with markdown template support')
+            ->addArgument('name', CommandDefinition::ARGUMENT_REQUIRED, 'The name of the email message')
+            ->addOption('view', null, CommandDefinition::OPTION_NONE, 'Also create a PHP HTML email template')
             ->addOption('force', 'f', CommandDefinition::OPTION_NONE, 'Overwrite if exists')
             ->setHelp(<<<HELP
-Creates a new mailable class.
+Creates a Symfony email message class.
 
 Examples:
   php core make:mail WelcomeEmail
   php core make:mail WelcomeEmail --view         # With view template
-  php core make:mail WelcomeEmail --markdown     # With markdown support
   php core make:mail Order/OrderConfirmation     # Nested namespace
 HELP);
     }
@@ -53,7 +51,6 @@ HELP);
     {
         $name = $input->getArgument('name');
         $withView = $input->getOption('view');
-        $withMarkdown = $input->getOption('markdown');
         $force = $input->getOption('force');
 
         // Parse name
@@ -68,15 +65,12 @@ HELP);
         $viewPath = implode('/', array_map([$this, 'kebab'], $parts));
         $fullViewName = 'emails' . ($viewPath ? '.' . str_replace('/', '.', $viewPath) : '') . '.' . $viewName;
 
-        // Choose stub based on options
-        $stubName = $withMarkdown ? 'mailable.markdown.stub' : 'mailable.stub';
-
         // Generate mailable content
-        $content = $this->getStubContent($stubName, [
+        $content = $this->getStubContent('mailable.stub', [
             'namespace' => $namespace,
             'class' => $className,
-            'view' => $fullViewName,
             'subject' => $this->titleCase($className),
+            'body_method' => $withView ? 'html' : 'text',
         ]);
 
         // Determine path
@@ -97,7 +91,7 @@ HELP);
         $output->comment("Path: " . $this->relativePath($path));
 
         // Create view template if requested
-        if ($withView || $withMarkdown) {
+        if ($withView) {
             $output->newLine();
             $output->info("Creating email template...");
             
@@ -107,9 +101,7 @@ HELP);
             }
             
             $templatePath = $viewDir . "/{$viewName}.php";
-            $templateStub = $withMarkdown ? 'email.markdown.stub' : 'email.stub';
-            
-            $templateContent = $this->getStubContent($templateStub, [
+            $templateContent = $this->getStubContent('email.stub', [
                 'class' => $className,
                 'subject' => $this->titleCase($className),
             ]);
@@ -120,7 +112,12 @@ HELP);
 
         $output->newLine();
         $output->info("Usage:");
-        $output->writeln("  mailer()->to(\$user->email)->send(new {$className}());");
+        if ($withView) {
+            $output->writeln("  \$body = \$views->render('{$fullViewName}');");
+        } else {
+            $output->writeln("  \$body = 'Your message';");
+        }
+        $output->writeln("  \$mailer->send(new {$className}('sender@example.test', \$user->email, \$body));");
 
         return 0;
     }

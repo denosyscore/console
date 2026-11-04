@@ -15,6 +15,31 @@ composer require denosyscore/console
 - src/Console/*
 - src/stubs/*
 
+## Mail generator
+
+`make:mail Name` generates an application class extending Symfony MIME's
+`Email`, with sender, recipient, and plain-text body constructor arguments.
+`make:mail Name --view` also creates a PHP HTML template; render that template
+through the application's view engine and pass its result as the body. The
+generated class then sets an HTML body. Inject Symfony's `MailerInterface`
+from the framework mail provider to send either message:
+
+```php
+$mailer->send(new \App\Mail\WelcomeEmail(
+    'sender@example.test',
+    $recipient,
+    'Welcome!',
+));
+```
+
+An application importing `Symfony\Component\Mime\Email` from generated code
+should declare `symfony/mime` as a direct Composer requirement; framework
+consumers already have the compatible Mailer transport and provider. The
+generator no longer offers `--markdown`: the earlier stub referenced an
+undefined `Denosys\Mail\Mailable` and did not have a Markdown renderer.
+Existing generated classes should be rewritten as Symfony `Email` messages;
+they are not modified automatically.
+
 ## Migration preview
 
 `migrate --pretend` lists pending migration names and reports that no changes

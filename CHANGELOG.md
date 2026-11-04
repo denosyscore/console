@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased (proposed 0.4.0)
+
+- Generate Symfony MIME `Email` messages that work with the framework's
+  `MailerInterface` binding, and emit a valid PHP HTML view template for
+  `--view`.
+- Remove `--markdown` and the unusable `Denosys\Mail\Mailable` stubs. This
+  breaks the command's previous output and option shape; existing generated
+  files require a manual conversion. Console's runtime command interfaces
+  and queue behavior are unchanged.
+- Test the generated class and template by loading and using them.
+
 ## Unreleased (proposed 0.3.2)
 
 - Accept database 0.4 while retaining the supported 0.2 and 0.3 lines.
