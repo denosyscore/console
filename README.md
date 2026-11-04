@@ -34,7 +34,8 @@ $mailer->send(new \App\Mail\WelcomeEmail(
 
 An application importing `Symfony\Component\Mime\Email` from generated code
 should declare `symfony/mime` as a direct Composer requirement; framework
-consumers already have the compatible Mailer transport and provider. The
+consumers have the compatible Mailer transport, and must register its mail
+provider before sending. The
 generator no longer offers `--markdown`: the earlier stub referenced an
 undefined `Denosys\Mail\Mailable` and did not have a Markdown renderer.
 Existing generated classes should be rewritten as Symfony `Email` messages;
