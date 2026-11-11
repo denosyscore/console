@@ -9,7 +9,7 @@
     "denosyscore/contracts": "^0.2",
     "denosyscore/container": "^0.2",
     "denosyscore/database": "^0.2.3 || ^0.3 || ^0.4 || ^0.5",
-    "denosyscore/http": "^0.2 || ^0.3",
+    "denosyscore/http": "^0.2 || ^0.3 || ^0.4",
     "denosyscore/queue": "^0.3"
   },
   "autoload": {
