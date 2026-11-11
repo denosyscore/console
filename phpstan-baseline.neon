@@ -1,0 +1,1189 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Cannot access offset ''default'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Cannot access offset ''description'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Cannot access offset ''mode'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Cannot access offset ''name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Cannot access offset ''shortcut'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Parameter \#1 \$mode of method Denosys\\Console\\Adapter\\SymfonyCommandAdapter\:\:mapArgumentMode\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Parameter \#1 \$mode of method Denosys\\Console\\Adapter\\SymfonyCommandAdapter\:\:mapOptionMode\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Parameter \#1 \$name of method Symfony\\Component\\Console\\Command\\Command\:\:addArgument\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Parameter \#1 \$name of method Symfony\\Component\\Console\\Command\\Command\:\:addOption\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Parameter \#2 \$shortcut of method Symfony\\Component\\Console\\Command\\Command\:\:addOption\(\) expects array\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Parameter \#3 \$description of method Symfony\\Component\\Console\\Command\\Command\:\:addArgument\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Parameter \#4 \$description of method Symfony\\Component\\Console\\Command\\Command\:\:addOption\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Adapter/SymfonyCommandAdapter.php
+
+		-
+			message: '#^Method Denosys\\Console\\Adapter\\SymfonyInputAdapter\:\:getArguments\(\) should return array\<string, mixed\> but returns array\<array\|bool\|float\|int\|string\|null\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Adapter/SymfonyInputAdapter.php
+
+		-
+			message: '#^Method Denosys\\Console\\Adapter\\SymfonyInputAdapter\:\:getOptions\(\) should return array\<string, mixed\> but returns array\<array\|bool\|float\|int\|string\|null\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Adapter/SymfonyInputAdapter.php
+
+		-
+			message: '#^Call to function method_exists\(\) with Symfony\\Component\\Console\\Application and ''addCommand'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Console/Application.php
+
+		-
+			message: '#^Parameter \#1 \$command of method Denosys\\Console\\Application\:\:add\(\) expects Denosys\\Console\\CommandInterface, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Application.php
+
+		-
+			message: '#^Call to method saveToCache\(\) on an unknown class Denosys\\Config\\Configuration\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/ConfigCacheCommand.php
+
+		-
+			message: '#^Instantiated class Denosys\\Config\\Configuration not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/ConfigCacheCommand.php
+
+		-
+			message: '#^Call to method clearCache\(\) on an unknown class Denosys\\Config\\Configuration\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/ConfigClearCommand.php
+
+		-
+			message: '#^Instantiated class Denosys\\Config\\Configuration not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/ConfigClearCommand.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 3
+			path: src/Console/Command/ContainerWarmupCommand.php
+
+		-
+			message: '#^Offset 1 on array\{non\-falsy\-string, non\-empty\-string\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 2
+			path: src/Console/Command/ContainerWarmupCommand.php
+
+		-
+			message: '#^Offset 1 on array\{non\-falsy\-string, numeric\-string\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 3
+			path: src/Console/Command/ContainerWarmupCommand.php
+
+		-
+			message: '#^Parameter \#1 \$class of method Denosys\\Console\\Command\\DbSeedCommand\:\:getBaseClassName\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/DbSeedCommand.php
+
+		-
+			message: '#^Parameter \#1 \$name of method Denosys\\Console\\Command\\DbSeedCommand\:\:resolveSeederClass\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/DbSeedCommand.php
+
+		-
+			message: '#^Parameter \#1 \$seederClass of method Denosys\\Console\\Command\\DbSeedCommand\:\:runSeeder\(\) expects class\-string\<Denosys\\Database\\Seeding\\SeederInterface\>, class\-string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/DbSeedCommand.php
+
+		-
+			message: '#^Parameter \#1 \$seederClass of method Denosys\\Console\\Command\\DbSeedCommand\:\:runSeeder\(\) expects class\-string\<Denosys\\Database\\Seeding\\SeederInterface\>, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/DbSeedCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeCommandCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeCommandCommand.php
+
+		-
+			message: '#^Parameter \#1 \$value of method Denosys\\Console\\Command\\MakeCommandCommand\:\:studly\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeCommandCommand.php
+
+		-
+			message: '#^Parameter \#2 \$replacements of method Denosys\\Console\\Command\\MakeCommandCommand\:\:getStubContent\(\) expects array\<string, string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeCommandCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeCommandCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeCommandCommand.php
+
+		-
+			message: '#^Parameter \#4 \$force of method Denosys\\Console\\Command\\MakeCommandCommand\:\:writeFile\(\) expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeCommandCommand.php
+
+		-
+			message: '#^Part \$commandName \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Console/Command/MakeCommandCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeControllerCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeControllerCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeControllerCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeControllerCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeControllerCommand.php
+
+		-
+			message: '#^Parameter \#4 \$force of method Denosys\\Console\\Command\\MakeControllerCommand\:\:writeFile\(\) expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeControllerCommand.php
+
+		-
+			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Binary operation "\.\=" between mixed and ''Factory'' results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeFactoryCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Parameter \#1 \$class of method Denosys\\Console\\Command\\MakeFactoryCommand\:\:getBaseClassName\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Parameter \#1 \$factoryName of method Denosys\\Console\\Command\\MakeFactoryCommand\:\:guessModelClass\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_ends_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Parameter \#2 \$replacements of method Denosys\\Console\\Command\\MakeFactoryCommand\:\:getStubContent\(\) expects array\<string, string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Part \$name \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: src/Console/Command/MakeFactoryCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeMailCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeMailCommand.php
+
+		-
+			message: '#^Parameter \#1 \$string of function trim expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMailCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMailCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMailCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMailCommand.php
+
+		-
+			message: '#^Parameter \#4 \$force of method Denosys\\Console\\Command\\MakeMailCommand\:\:writeFile\(\) expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Console/Command/MakeMailCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeMiddlewareCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeMiddlewareCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMiddlewareCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMiddlewareCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMiddlewareCommand.php
+
+		-
+			message: '#^Parameter \#4 \$force of method Denosys\\Console\\Command\\MakeMiddlewareCommand\:\:writeFile\(\) expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMiddlewareCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeMigrationCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeMigrationCommand.php
+
+		-
+			message: '#^Parameter \#1 \$value of method Denosys\\Console\\Command\\MakeMigrationCommand\:\:snake\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMigrationCommand.php
+
+		-
+			message: '#^Parameter \#2 \$replacements of method Denosys\\Console\\Command\\MakeMigrationCommand\:\:getStubContent\(\) expects array\<string, string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Console/Command/MakeMigrationCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMigrationCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeMigrationCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeModelCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeModelCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeModelCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeModelCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeModelCommand.php
+
+		-
+			message: '#^Parameter \#4 \$force of method Denosys\\Console\\Command\\MakeModelCommand\:\:writeFile\(\) expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/Console/Command/MakeModelCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeProviderCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeProviderCommand.php
+
+		-
+			message: '#^Parameter \#1 \$value of method Denosys\\Console\\Command\\MakeProviderCommand\:\:studly\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeProviderCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeProviderCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeProviderCommand.php
+
+		-
+			message: '#^Parameter \#4 \$force of method Denosys\\Console\\Command\\MakeProviderCommand\:\:writeFile\(\) expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeProviderCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeRequestCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeRequestCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeRequestCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeRequestCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeRequestCommand.php
+
+		-
+			message: '#^Parameter \#4 \$force of method Denosys\\Console\\Command\\MakeRequestCommand\:\:writeFile\(\) expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeRequestCommand.php
+
+		-
+			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Console/Command/MakeSeederCommand.php
+
+		-
+			message: '#^Binary operation "\.\=" between mixed and ''Seeder'' results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 1
+			path: src/Console/Command/MakeSeederCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\MakeSeederCommand\:\:getStubContent\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Command/MakeSeederCommand.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_ends_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeSeederCommand.php
+
+		-
+			message: '#^Parameter \#2 \$replacements of method Denosys\\Console\\Command\\MakeSeederCommand\:\:getStubContent\(\) expects array\<string, string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeSeederCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeSeederCommand.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function str_replace expects array\<string\>\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MakeSeederCommand.php
+
+		-
+			message: '#^Part \$name \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: src/Console/Command/MakeSeederCommand.php
+
+		-
+			message: '#^Binary operation "\*" between mixed and 1000 results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Console/Command/MigrateCommand.php
+
+		-
+			message: '#^Cannot access property \$error on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateCommand.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: src/Console/Command/MigrateCommand.php
+
+		-
+			message: '#^Cannot access property \$success on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateCommand.php
+
+		-
+			message: '#^Cannot access property \$time on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateCommand.php
+
+		-
+			message: '#^Parameter \#1 \$seederClass of method Denosys\\Database\\Seeding\\SeederRunner\:\:run\(\) expects class\-string\<Denosys\\Database\\Seeding\\SeederInterface\>, class\-string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MigrateCommand.php
+
+		-
+			message: '#^Part \$record\-\>error \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Console/Command/MigrateCommand.php
+
+		-
+			message: '#^Part \$record\-\>name \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 3
+			path: src/Console/Command/MigrateCommand.php
+
+		-
+			message: '#^Binary operation "\*" between mixed and 1000 results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Console/Command/MigrateFreshCommand.php
+
+		-
+			message: '#^Cannot access property \$error on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateFreshCommand.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: src/Console/Command/MigrateFreshCommand.php
+
+		-
+			message: '#^Cannot access property \$success on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateFreshCommand.php
+
+		-
+			message: '#^Cannot access property \$time on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateFreshCommand.php
+
+		-
+			message: '#^Parameter \#1 \$seederClass of method Denosys\\Database\\Seeding\\SeederRunner\:\:run\(\) expects class\-string\<Denosys\\Database\\Seeding\\SeederInterface\>, class\-string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MigrateFreshCommand.php
+
+		-
+			message: '#^Part \$record\-\>error \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Console/Command/MigrateFreshCommand.php
+
+		-
+			message: '#^Part \$record\-\>name \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: src/Console/Command/MigrateFreshCommand.php
+
+		-
+			message: '#^Binary operation "\*" between mixed and 1000 results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Console/Command/MigrateRollbackCommand.php
+
+		-
+			message: '#^Cannot access property \$error on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateRollbackCommand.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: src/Console/Command/MigrateRollbackCommand.php
+
+		-
+			message: '#^Cannot access property \$success on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateRollbackCommand.php
+
+		-
+			message: '#^Cannot access property \$time on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Console/Command/MigrateRollbackCommand.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: src/Console/Command/MigrateRollbackCommand.php
+
+		-
+			message: '#^Part \$record\-\>error \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Console/Command/MigrateRollbackCommand.php
+
+		-
+			message: '#^Part \$record\-\>name \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 2
+			path: src/Console/Command/MigrateRollbackCommand.php
+
+		-
+			message: '#^Parameter \#1 \$headers of method Denosys\\Console\\OutputInterface\:\:table\(\) expects array\<string, array\<string\>\|string\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MigrateStatusCommand.php
+
+		-
+			message: '#^Parameter \#2 \$rows of method Denosys\\Console\\OutputInterface\:\:table\(\) expects array\<array\<string, mixed\>\>, list\<array\<int, int\|string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/MigrateStatusCommand.php
+
+		-
+			message: '#^Call to function is_int\(\) with int will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Console/Command/OptimizeClearCommand.php
+
+		-
+			message: '#^Parameter \#1 \$command of function proc_open expects list\<string\>\|string, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/OptimizeClearCommand.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between non\-falsy\-string and '''' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Console/Command/OptimizeClearCommand.php
+
+		-
+			message: '#^Call to function is_int\(\) with int will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Console/Command/OptimizeCommand.php
+
+		-
+			message: '#^Parameter \#1 \$command of function proc_open expects list\<string\>\|string, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/OptimizeCommand.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between non\-falsy\-string and '''' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Console/Command/OptimizeCommand.php
+
+		-
+			message: '#^Cannot access offset ''attempts'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot access offset ''id'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot access offset ''job'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot call method connection\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot call method delete\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot call method displayName\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot call method failed\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot call method pop\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot call method release\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot call method retryAfter\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Parameter \#1 \$id of method Denosys\\Queue\\Driver\\DatabaseQueue\:\:fail\(\) expects int\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Parameter \#1 \$job of method Denosys\\Queue\\JobRunner\:\:run\(\) expects Denosys\\Queue\\Job, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Parameter \#2 \$job of method Denosys\\Queue\\Driver\\DatabaseQueue\:\:fail\(\) expects Denosys\\Queue\\Job, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Part \$attempts \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Part \$displayName \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Part \$queueName \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Console/Command/QueueWorkCommand.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method aliases\(\) on an unknown class Denosys\\Routing\\MiddlewareRegistry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method build\(\) on an unknown class Denosys\\Routing\\RouteCache\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method getAliases\(\) on an unknown class Denosys\\Routing\\MiddlewareRegistry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method getApiPath\(\) on an unknown class Denosys\\Bootstrap\\Configuration\\RoutesConfiguration\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method getCustomConfigurator\(\) on an unknown class Denosys\\Bootstrap\\Configuration\\RoutesConfiguration\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method getGroups\(\) on an unknown class Denosys\\Routing\\MiddlewareRegistry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method getRouteCollection\(\) on an unknown class Denosys\\Routing\\Router\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method getWebPath\(\) on an unknown class Denosys\\Bootstrap\\Configuration\\RoutesConfiguration\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method group\(\) on an unknown class Denosys\\Routing\\MiddlewareRegistry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method hasConfiguration\(\) on an unknown class Denosys\\Bootstrap\\Configuration\\RoutesConfiguration\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method middleware\(\) on an unknown class Denosys\\Routing\\Router\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method resolve\(\) on an unknown class Denosys\\Routing\\MiddlewareRegistry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to static method loadWebRoutes\(\) on an unknown class Denosys\\Routing\\RouteLoader\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to static method withDefaults\(\) on an unknown class Denosys\\Routing\\Dispatcher\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Cannot call method count\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Cannot call method group\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Class Denosys\\Bootstrap\\Configuration\\RoutesConfiguration not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Class Denosys\\Routing\\MiddlewareRegistry not found\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Instantiated class Denosys\\Routing\\MiddlewareRegistry not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Instantiated class Denosys\\Routing\\RouteCache not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Instantiated class Denosys\\Routing\\RouteCollection not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Instantiated class Denosys\\Routing\\RouteManager not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Instantiated class Denosys\\Routing\\Router not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\RoutesCacheCommand\:\:buildSourceRouter\(\) has invalid return type Denosys\\Routing\\Router\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\RoutesCacheCommand\:\:createSourceMiddlewareRegistry\(\) has invalid return type Denosys\\Routing\\MiddlewareRegistry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\Command\\RoutesCacheCommand\:\:resolveRoutesConfiguration\(\) has invalid return type Denosys\\Bootstrap\\Configuration\\RoutesConfiguration\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$configuration contains unknown class Denosys\\Bootstrap\\Configuration\\RoutesConfiguration\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$registered contains unknown class Denosys\\Routing\\MiddlewareRegistry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Parameter \#1 \$path of method Denosys\\Console\\Command\\RoutesCacheCommand\:\:resolvePath\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Parameter \#3 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Parameter \$registry of method Denosys\\Console\\Command\\RoutesCacheCommand\:\:loadRoutesWithMiddleware\(\) has invalid type Denosys\\Routing\\MiddlewareRegistry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Parameter \$router of method Denosys\\Console\\Command\\RoutesCacheCommand\:\:loadRoutesWithMiddleware\(\) has invalid type Denosys\\Routing\\Router\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Trying to invoke mixed but it''s not a callable\.$#'
+			identifier: callable.nonCallable
+			count: 1
+			path: src/Console/Command/RoutesCacheCommand.php
+
+		-
+			message: '#^Call to method clear\(\) on an unknown class Denosys\\Routing\\RouteCache\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesClearCommand.php
+
+		-
+			message: '#^Instantiated class Denosys\\Routing\\RouteCache not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/RoutesClearCommand.php
+
+		-
+			message: '#^Call to function is_int\(\) with int will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Console/Command/StartupBenchmarkCommand.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 1
+			path: src/Console/Command/StartupBenchmarkCommand.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: src/Console/Command/StartupBenchmarkCommand.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 3
+			path: src/Console/Command/StartupBenchmarkCommand.php
+
+		-
+			message: '#^Parameter \#1 \$command of function proc_open expects list\<string\>\|string, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/StartupBenchmarkCommand.php
+
+		-
+			message: '#^Parameter \#1 \$headers of method Denosys\\Console\\OutputInterface\:\:table\(\) expects array\<string, array\<string\>\|string\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/StartupBenchmarkCommand.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between non\-falsy\-string and '''' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Console/Command/StartupBenchmarkCommand.php
+
+		-
+			message: '#^Parameter \#1 \$headers of method Denosys\\Console\\OutputInterface\:\:table\(\) expects array\<string, array\<string\>\|string\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/StubsPublishCommand.php
+
+		-
+			message: '#^Parameter \#2 \$rows of method Denosys\\Console\\OutputInterface\:\:table\(\) expects array\<array\<string, mixed\>\>, array\<int, list\<string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/StubsPublishCommand.php
+
+		-
+			message: '#^Part \$type \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Console/Command/StubsPublishCommand.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 1
+			path: src/Console/Command/StubsPublishCommand.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/\*'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Console/Command/ViewClearCommand.php
+
+		-
+			message: '#^Call to method get\(\) on an unknown class Denosys\\Config\\ConfigurationInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/ViewClearCommand.php
+
+		-
+			message: '#^Function storage_path not found\.$#'
+			identifier: function.notFound
+			count: 1
+			path: src/Console/Command/ViewClearCommand.php
+
+		-
+			message: '#^Parameter \#1 \$filename of function is_dir expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Command/ViewClearCommand.php
+
+		-
+			message: '#^Parameter \$config of method Denosys\\Console\\Command\\ViewClearCommand\:\:__construct\(\) has invalid type Denosys\\Config\\ConfigurationInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/ViewClearCommand.php
+
+		-
+			message: '#^Property Denosys\\Console\\Command\\ViewClearCommand\:\:\$config has unknown class Denosys\\Config\\ConfigurationInterface as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Console/Command/ViewClearCommand.php
+
+		-
+			message: '#^Method Denosys\\Console\\CommandDefinition\:\:getArguments\(\) should return array\<string, mixed\> but returns array\<array\<string, mixed\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/CommandDefinition.php
+
+		-
+			message: '#^Method Denosys\\Console\\CommandDefinition\:\:getOptions\(\) should return array\<string, mixed\> but returns array\<array\<string, mixed\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/CommandDefinition.php
+
+		-
+			message: '#^Argument of an invalid type list\<string\>\|false supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/Console/Kernel.php
+
+		-
+			message: '#^Cannot call method get\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: src/Console/Kernel.php
+
+		-
+			message: '#^Method Denosys\\Console\\Kernel\:\:discoverCommands\(\) should return array\<class\-string\<Denosys\\Console\\CommandInterface\>\> but returns list\<string\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Console/Kernel.php
+
+		-
+			message: '#^Method Denosys\\Console\\Kernel\:\:instantiateCommand\(\) should return Denosys\\Console\\CommandInterface but returns object\.$#'
+			identifier: return.type
+			count: 2
+			path: src/Console/Kernel.php
+
+		-
+			message: '#^Parameter \#1 \$commandClass of method Denosys\\Console\\Kernel\:\:resolveCommand\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Kernel.php
+
+		-
+			message: '#^Parameter \#1 \$objectOrClass of class ReflectionClass constructor expects class\-string\<T of object\>\|T of object, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Kernel.php
