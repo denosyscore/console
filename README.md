@@ -2,13 +2,55 @@
 
 Console kernel and command infrastructure
 
-## Status
-
-Initial extraction snapshot from denosyscore monorepo as of 2026-02-14.
-
 ## Installation
 
+```bash
 composer require denosyscore/console
+```
+
+## Quick start
+
+Write commands against small DenoSys interfaces and run them on Symfony Console.
+
+<!-- quickstart -->
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Denosys\Console\Application;
+use Denosys\Console\CommandDefinition;
+use Denosys\Console\CommandInterface;
+use Denosys\Console\InputInterface;
+use Denosys\Console\OutputInterface;
+use Denosys\Container\Container;
+use Symfony\Component\Console\Input\ArrayInput;
+
+final class GreetCommand implements CommandInterface
+{
+    public function getName(): string { return 'greet'; }
+    public function getDescription(): string { return 'Greet someone by name'; }
+
+    public function configure(): CommandDefinition
+    {
+        return (new CommandDefinition())
+            ->addArgument('name', CommandDefinition::ARGUMENT_REQUIRED, 'Who to greet');
+    }
+
+    public function execute(InputInterface $input, OutputInterface $output): int
+    {
+        $output->success("Hello, {$input->getArgument('name')}!");
+
+        return 0;
+    }
+}
+
+$console = new Application(new Container(), 'My App', '1.0.0');
+$console->add(new GreetCommand());
+
+// From a bin script, call $console->run() and use: php bin/console greet Ada
+exit($console->getSymfonyApplication()->run(new ArrayInput(['command' => 'greet', 'name' => 'Ada'])));
+```
 
 ## Included Modules
 
