@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.0 – 2026-11-12
+
+- **Breaking:** `config:cache`, `config:clear`, `routes:cache`, `routes:clear` and `view:clear` moved to the framework.
+- `Kernel` accepts a third constructor argument, `$hostCommands`.
+- No longer requires `denosyscore/contracts` or `denosyscore/http`.
+
 ## 0.10.0 – 2026-11-12
 
 ### Changed

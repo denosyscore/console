@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace {{ namespace }};
 
 use Denosys\Container\Container;
-use Denosys\Contracts\ServiceProviderInterface;
+use Denosys\Framework\Provider;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
-class {{ class }} implements ServiceProviderInterface
+class {{ class }} implements Provider
 {
     /**
      * Register any application services.

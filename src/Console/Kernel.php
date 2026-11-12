@@ -69,21 +69,21 @@ abstract class Kernel
         \Denosys\Console\Command\DbSeedCommand::class,
         \Denosys\Console\Command\StubsPublishCommand::class,
         \Denosys\Console\Command\QueueWorkCommand::class,
-        \Denosys\Console\Command\ConfigCacheCommand::class,
-        \Denosys\Console\Command\ConfigClearCommand::class,
-        \Denosys\Console\Command\RoutesCacheCommand::class,
-        \Denosys\Console\Command\RoutesClearCommand::class,
         \Denosys\Console\Command\ContainerWarmupCommand::class,
         \Denosys\Console\Command\ContainerClearCommand::class,
         \Denosys\Console\Command\OptimizeCommand::class,
         \Denosys\Console\Command\OptimizeClearCommand::class,
         \Denosys\Console\Command\StartupBenchmarkCommand::class,
-        \Denosys\Console\Command\ViewClearCommand::class,
     ];
 
+    /**
+     * @param list<class-string<CommandInterface>> $hostCommands Commands owned by the host,
+     *        such as the framework's configuration and route cache commands.
+     */
     public function __construct(
         protected readonly ContainerInterface $container,
         protected readonly string $basePath,
+        protected readonly array $hostCommands = [],
     ) {
         $this->configureCommandDiscovery();
     }
@@ -95,8 +95,8 @@ abstract class Kernel
     {
         $console = new Application($this->container, 'Denosys Console', '1.0.0');
 
-        // Register core framework commands
-        foreach ($this->coreCommands as $commandClass) {
+        // Register this package's commands, then the host's
+        foreach ([...$this->coreCommands, ...$this->hostCommands] as $commandClass) {
             $console->add($this->resolveCommand($commandClass));
         }
 
