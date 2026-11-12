@@ -6,11 +6,11 @@
   "require": {
     "php": "^8.2",
     "symfony/console": "^7.4",
-    "denosyscore/contracts": "^0.2",
-    "denosyscore/container": "^0.2",
-    "denosyscore/database": "^0.2.3 || ^0.3 || ^0.4 || ^0.5",
-    "denosyscore/http": "^0.2 || ^0.3 || ^0.4",
-    "denosyscore/queue": "^0.3"
+    "denosyscore/contracts": "^0.10",
+    "denosyscore/container": "^0.10",
+    "denosyscore/database": "^0.10",
+    "denosyscore/http": "^0.10",
+    "denosyscore/queue": "^0.10"
   },
   "autoload": {
     "psr-4": {
@@ -29,5 +29,10 @@
     "phpunit/phpunit": "^10.5",
     "symfony/mime": "^7.4 || ^8.0",
     "phpstan/phpstan": "^2.1"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "0.10.x-dev"
+    }
   }
 }
