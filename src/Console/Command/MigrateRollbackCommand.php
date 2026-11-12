@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Denosys\Console\Command;
 
+use Denosys\Contracts\Config\ConfigReader;
 use Denosys\Console\CommandDefinition;
 use Denosys\Console\CommandInterface;
 use Denosys\Console\InputInterface;
@@ -85,8 +86,13 @@ class MigrateRollbackCommand implements CommandInterface
 
     private function isProduction(): bool
     {
-        $env = $_ENV['APP_ENV'] ?? getenv('APP_ENV') ?: 'production';
-        return $env === 'production';
+        // Without configuration, assume production so destructive runs still ask.
+        $config = $this->container->has(ConfigReader::class) ? $this->container->get(ConfigReader::class) : null;
+        if (!$config instanceof ConfigReader) {
+            return true;
+        }
+
+        return ($config->get('app.env') ?? 'production') === 'production';
     }
 
     private function migrator(): Migrator

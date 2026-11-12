@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.12.0 – 2026-11-12
+
+- `migrate` and `migrate:rollback` read `app.env` through the
+  `Denosys\Contracts\Config\ConfigReader` binding instead of the process
+  environment, and assume production when no configuration is bound.
+- Requires `denosyscore/contracts`.
+
 ## 0.11.1 – 2026-11-12
 
 ### Fixed
