@@ -7,134 +7,85 @@ namespace Denosys\Console;
 use Denosys\Container\ContainerInterface;
 
 /**
- * Base console kernel with auto-discovery.
- * 
- * Commands in app/Console/Commands are automatically discovered.
- * No manual registration needed!
+ * Builds the console application from three sources, in order: this
+ * package's own commands, the commands the host registers (the framework and
+ * other packages), and the commands discovered in the application's command
+ * directory. Configure it with constructor arguments; it is not subclassed.
+ *
+ * A command is a CommandInterface implementation or a plain invokable class
+ * with #[AsCommand]. Commands with static metadata (#[AsCommand] or
+ * LazyCommandInterface) are built only when they run.
  */
-abstract class Kernel
+final class Kernel
 {
-    /**
-     * Additional commands to register (besides auto-discovered ones).
-     * 
-     * @var array<class-string<CommandInterface>>
-     */
-    /** @var array<string, mixed> */
-
-    protected array $commands = [];
-
-    /**
-     * Paths to scan for commands (relative to basePath).
-     * 
-     * @var array<string>
-     */
-    protected array $commandPaths = [
-        'app/Console/Commands',
+    /** Commands this package owns: generators, stubs and startup caches. */
+    private const CORE_COMMANDS = [
+        Command\MakeMigrationCommand::class,
+        Command\MakeControllerCommand::class,
+        Command\MakeModelCommand::class,
+        Command\MakeProviderCommand::class,
+        Command\MakeCommandCommand::class,
+        Command\MakeMiddlewareCommand::class,
+        Command\MakeRequestCommand::class,
+        Command\MakeFactoryCommand::class,
+        Command\MakeSeederCommand::class,
+        Command\MakeMailCommand::class,
+        Command\StubsPublishCommand::class,
+        Command\OptimizeCommand::class,
+        Command\OptimizeClearCommand::class,
+        Command\StartupBenchmarkCommand::class,
     ];
 
     /**
-     * Namespace prefix for discovered commands.
-     */
-    protected string $commandNamespace = 'App\\Console\\Commands';
-
-    /**
-     * Namespace mapping by command path.
-     *
-     * @var array<string, string>
-     */
-    protected array $commandPathNamespaces = [
-        'app/Console/Commands' => 'App\\Console\\Commands',
-    ];
-
-    /**
-     * Framework core commands (always registered).
-     * 
-     * @var array<class-string<CommandInterface>>
-     */
-    protected array $coreCommands = [
-        \Denosys\Console\Command\MigrateCommand::class,
-        \Denosys\Console\Command\MigrateRollbackCommand::class,
-        \Denosys\Console\Command\MigrateStatusCommand::class,
-        \Denosys\Console\Command\MigrateFreshCommand::class,
-        \Denosys\Console\Command\MakeMigrationCommand::class,
-        \Denosys\Console\Command\MakeControllerCommand::class,
-        \Denosys\Console\Command\MakeModelCommand::class,
-        \Denosys\Console\Command\MakeProviderCommand::class,
-        \Denosys\Console\Command\MakeCommandCommand::class,
-        \Denosys\Console\Command\MakeMiddlewareCommand::class,
-        \Denosys\Console\Command\MakeRequestCommand::class,
-        \Denosys\Console\Command\MakeFactoryCommand::class,
-        \Denosys\Console\Command\MakeSeederCommand::class,
-        \Denosys\Console\Command\MakeMailCommand::class,
-        \Denosys\Console\Command\DbSeedCommand::class,
-        \Denosys\Console\Command\StubsPublishCommand::class,
-        \Denosys\Console\Command\QueueWorkCommand::class,
-        \Denosys\Console\Command\OptimizeCommand::class,
-        \Denosys\Console\Command\OptimizeClearCommand::class,
-        \Denosys\Console\Command\StartupBenchmarkCommand::class,
-    ];
-
-    /**
-     * @param list<class-string<CommandInterface>> $hostCommands Commands owned by the host,
-     *        such as the framework's configuration and route cache commands.
+     * @param list<class-string> $commands Commands the host registers.
+     * @param string|null $discoverIn Directory under $basePath scanned for commands; null disables discovery.
      */
     public function __construct(
-        protected readonly ContainerInterface $container,
-        protected readonly string $basePath,
-        protected readonly array $hostCommands = [],
+        private readonly ContainerInterface $container,
+        private readonly string $basePath,
+        private readonly array $commands = [],
+        private readonly ?string $discoverIn = 'app/Console/Commands',
+        private readonly string $discoverNamespace = 'App\\Console\\Commands',
+        private readonly bool $withCoreCommands = true,
     ) {
-        $this->configureCommandDiscovery();
     }
 
-    /**
-     * Bootstrap the console and return the application.
-     */
     public function bootstrap(): Application
     {
         $console = new Application($this->container, 'Denosys Console', '1.0.0');
 
-        // Register this package's commands, then the host's
-        foreach ([...$this->coreCommands, ...$this->hostCommands] as $commandClass) {
-            $console->add($this->resolveCommand($commandClass));
-        }
-
-        // Auto-discover user commands
-        foreach ($this->discoverCommands() as $commandClass) {
-            $console->add($this->resolveCommand($commandClass));
-        }
-
-        // Register explicitly listed commands
-        foreach ($this->commands as $commandClass) {
-            $console->add($this->resolveCommand($commandClass));
+        $classes = [
+            ...($this->withCoreCommands ? self::CORE_COMMANDS : []),
+            ...$this->commands,
+            ...$this->discoverCommands(),
+        ];
+        foreach (array_values(array_unique($classes)) as $class) {
+            $console->add($this->command($class));
         }
 
         return $console;
     }
 
-    /**
-     * Discover command classes from configured paths.
-     * 
-     * @return array<class-string<CommandInterface>>
-     */
-    protected function discoverCommands(): array
+    public function handle(): int
     {
+        return $this->bootstrap()->run();
+    }
+
+    /**
+     * @return list<class-string>
+     */
+    private function discoverCommands(): array
+    {
+        if ($this->discoverIn === null) {
+            return [];
+        }
+
+        $directory = $this->basePath . '/' . trim($this->discoverIn, '/');
         $commands = [];
-
-        foreach ($this->commandPaths as $path) {
-            $fullPath = $this->basePath . '/' . $path;
-            
-            if (!is_dir($fullPath)) {
-                continue;
-            }
-
-            $files = glob($fullPath . '/*.php');
-            
-            foreach ($files as $file) {
-                $className = $this->getClassFromFile($file, $path);
-                
-                if ($className && $this->isValidCommand($className)) {
-                    $commands[] = $className;
-                }
+        foreach (glob($directory . '/*.php') ?: [] as $file) {
+            $class = rtrim($this->discoverNamespace, '\\') . '\\' . pathinfo($file, PATHINFO_FILENAME);
+            if (class_exists($class) && $this->isCommand($class)) {
+                $commands[] = $class;
             }
         }
 
@@ -142,165 +93,79 @@ abstract class Kernel
     }
 
     /**
-     * Get the fully qualified class name from a file.
+     * @param class-string $class
      */
-    protected function getClassFromFile(string $file, string $relativePath): ?string
+    private function isCommand(string $class): bool
     {
-        $filename = pathinfo($file, PATHINFO_FILENAME);
-
-        $namespace = $this->resolveCommandNamespace($relativePath);
-        if ($namespace === null) {
-            return null;
-        }
-
-        return $namespace . '\\' . $filename;
-    }
-
-    private function configureCommandDiscovery(): void
-    {
-        if (!$this->container->has('config')) {
-            return;
-        }
-
-        try {
-            $config = $this->container->get('config');
-
-            $paths = $config->get('console.command_paths', $this->commandPaths);
-            if (is_array($paths)) {
-                $normalized = array_values(array_filter($paths, static fn(mixed $path): bool => is_string($path) && $path !== ''));
-
-                if ($normalized !== []) {
-                    $this->commandPaths = $normalized;
-                }
-            }
-
-            $namespace = $config->get('console.command_namespace', $this->commandNamespace);
-            if (is_string($namespace) && $namespace !== '') {
-                $this->commandNamespace = trim($namespace, '\\');
-            }
-
-            $mapping = $config->get('console.command_namespaces', []);
-            if (is_array($mapping)) {
-                foreach ($mapping as $path => $mappedNamespace) {
-                    if (is_string($path) && is_string($mappedNamespace) && $path !== '' && $mappedNamespace !== '') {
-                        $this->commandPathNamespaces[$path] = trim($mappedNamespace, '\\');
-                    }
-                }
-            }
-
-            foreach ($this->commandPaths as $index => $path) {
-                if (!isset($this->commandPathNamespaces[$path])) {
-                    $this->commandPathNamespaces[$path] = $index === 0
-                        ? $this->commandNamespace
-                        : $this->convertPathToNamespace($path);
-                }
-            }
-        } catch (\Throwable) {
-            // Keep sane defaults when config is unavailable in constrained contexts.
-        }
-    }
-
-    private function resolveCommandNamespace(string $relativePath): ?string
-    {
-        if (isset($this->commandPathNamespaces[$relativePath])) {
-            return $this->commandPathNamespaces[$relativePath];
-        }
-
-        $namespace = $this->convertPathToNamespace($relativePath);
-
-        return $namespace !== '' ? $namespace : null;
-    }
-
-    private function convertPathToNamespace(string $path): string
-    {
-        $namespace = str_replace('/', '\\', trim($path, '/'));
-
-        return (string) preg_replace('/^app/', 'App', $namespace);
-    }
-
-    /**
-     * Check if a class is a valid command.
-     */
-    protected function isValidCommand(string $className): bool
-    {
-        if (!class_exists($className)) {
+        $reflection = new \ReflectionClass($class);
+        if ($reflection->isAbstract()) {
             return false;
         }
 
-        $reflection = new \ReflectionClass($className);
-        
-        return $reflection->implementsInterface(CommandInterface::class) 
-            && !$reflection->isAbstract();
+        return $reflection->implementsInterface(CommandInterface::class) || InvokableCommand::supports($class);
     }
 
     /**
-     * Resolve a command instance.
+     * @param class-string $class
      */
-    protected function resolveCommand(string $commandClass): CommandInterface
+    private function command(string $class): CommandInterface
     {
-        if (is_subclass_of($commandClass, LazyCommandInterface::class)) {
-            return new LazyCommandProxy(
-                $commandClass,
-                fn (): CommandInterface => $this->instantiateCommand($commandClass),
-            );
+        if (InvokableCommand::supports($class)) {
+            return new InvokableCommand($class, fn (string $command): object => $this->instantiate($command));
         }
 
-        return $this->instantiateCommand($commandClass);
+        if (is_subclass_of($class, LazyCommandInterface::class)) {
+            return new LazyCommandProxy($class, fn (): CommandInterface => $this->asCommand($this->instantiate($class)));
+        }
+
+        if (!is_subclass_of($class, CommandInterface::class)) {
+            throw new \InvalidArgumentException("[{$class}] is not a console command: implement CommandInterface or add #[AsCommand] and __invoke().");
+        }
+
+        return $this->asCommand($this->instantiate($class));
+    }
+
+    private function asCommand(object $command): CommandInterface
+    {
+        if (!$command instanceof CommandInterface) {
+            throw new \LogicException($command::class . ' does not implement ' . CommandInterface::class . '.');
+        }
+
+        return $command;
     }
 
     /**
-     * Instantiate a command with its dependencies.
+     * Build a command, giving $basePath and $seedersPath string parameters the
+     * application base path and resolving everything else from the container.
+     *
+     * @param class-string $class
      */
-    protected function instantiateCommand(string $commandClass): CommandInterface
+    private function instantiate(string $class): object
     {
-        $reflection = new \ReflectionClass($commandClass);
-        $constructor = $reflection->getConstructor();
-
+        $constructor = (new \ReflectionClass($class))->getConstructor();
         if ($constructor === null) {
-            return new $commandClass();
+            return new $class();
         }
 
-        $parameters = $constructor->getParameters();
-        $args = [];
-
-        foreach ($parameters as $param) {
-            $type = $param->getType();
-            
-            if ($type instanceof \ReflectionNamedType && !$type->isBuiltin()) {
-                $typeName = $type->getName();
-                
-                if ($this->container->has($typeName)) {
-                    $args[] = $this->container->get($typeName);
-                    continue;
-                }
+        $arguments = [];
+        foreach ($constructor->getParameters() as $parameter) {
+            $type = $parameter->getType();
+            if ($type instanceof \ReflectionNamedType && !$type->isBuiltin() && $this->container->has($type->getName())) {
+                $arguments[] = $this->container->get($type->getName());
+                continue;
             }
-
-            // Handle common string parameters
-            $paramName = $param->getName();
-            if ($paramName === 'basePath' || $paramName === 'seedersPath') {
-                $args[] = $this->basePath;
+            if (in_array($parameter->getName(), ['basePath', 'seedersPath'], true)) {
+                $arguments[] = $this->basePath;
+                continue;
+            }
+            if ($parameter->isDefaultValueAvailable()) {
+                $arguments[] = $parameter->getDefaultValue();
                 continue;
             }
 
-            // Check for default value
-            if ($param->isDefaultValueAvailable()) {
-                $args[] = $param->getDefaultValue();
-                continue;
-            }
-
-            throw new \RuntimeException(
-                "Cannot resolve parameter [{$paramName}] for command [{$commandClass}]"
-            );
+            throw new \RuntimeException("Cannot resolve parameter [{$parameter->getName()}] for command [{$class}]");
         }
 
-        return $reflection->newInstanceArgs($args);
-    }
-
-    /**
-     * Run the console application.
-     */
-    public function handle(): int
-    {
-        return $this->bootstrap()->run();
+        return new $class(...$arguments);
     }
 }

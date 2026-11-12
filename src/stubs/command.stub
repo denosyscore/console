@@ -4,27 +4,20 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use Denosys\Console\AsCommand;
 use Denosys\Console\CommandDefinition;
-use Denosys\Console\CommandInterface;
 use Denosys\Console\InputInterface;
 use Denosys\Console\OutputInterface;
 
 /**
  * {{ description }}
  */
-class {{ class }} implements CommandInterface
+#[AsCommand('{{ command_name }}', '{{ description }}')]
+final readonly class {{ class }}
 {
-    public function getName(): string
-    {
-        return '{{ command_name }}';
-    }
+    // Constructor dependencies are resolved when the command runs.
 
-    public function getDescription(): string
-    {
-        return '{{ description }}';
-    }
-
-    public function configure(): CommandDefinition
+    public static function definition(): CommandDefinition
     {
         return (new CommandDefinition())
             // ->addArgument('arg', CommandDefinition::ARGUMENT_REQUIRED, 'Description')
@@ -37,13 +30,12 @@ Examples:
 HELP);
     }
 
-    public function execute(InputInterface $input, OutputInterface $output): int
+    public function __invoke(InputInterface $input, OutputInterface $output): int
     {
-        $output->info('Executing {{ class }}...');
-
         // Your command logic here
 
         $output->success('Done!');
+
         return 0;
     }
 }

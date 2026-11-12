@@ -43,13 +43,6 @@ final class DeferredCommand implements LazyCommandInterface
     }
 }
 
-final class DeferredTestKernel extends Kernel
-{
-    protected array $coreCommands = [];
-    protected array $commandPaths = [];
-    protected array $commands = [DeferredCommand::class];
-}
-
 final class LegacyCommand implements CommandInterface
 {
     public function getName(): string { return 'legacy:check'; }
@@ -58,18 +51,11 @@ final class LegacyCommand implements CommandInterface
     public function execute(InputInterface $input, OutputInterface $output): int { return 0; }
 }
 
-final class LegacyTestKernel extends Kernel
-{
-    protected array $coreCommands = [];
-    protected array $commandPaths = [];
-    protected array $commands = [LegacyCommand::class];
-}
-
 final class LazyCommandRegistrationTest extends TestCase
 {
     public function testExistingCommandsRemainRegisteredWithoutMetadata(): void
     {
-        $console = (new LegacyTestKernel(new Container(), __DIR__))->bootstrap();
+        $console = (new Kernel(new Container(), __DIR__, commands: [LegacyCommand::class], discoverIn: null, withCoreCommands: false))->bootstrap();
 
         self::assertInstanceOf(LegacyCommand::class, $console->getCommands()['legacy:check']);
     }
@@ -83,7 +69,7 @@ final class LazyCommandRegistrationTest extends TestCase
 
             return new DeferredResource();
         });
-        $console = (new DeferredTestKernel($container, __DIR__))->bootstrap();
+        $console = (new Kernel($container, __DIR__, commands: [DeferredCommand::class], discoverIn: null, withCoreCommands: false))->bootstrap();
         self::assertSame(0, $resolutions);
 
         $symfony = $console->getSymfonyApplication();

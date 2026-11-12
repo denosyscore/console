@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.16.0 – 2026-11-12
+
+- **Breaking:** `Kernel` is final. Configure it with `commands:`,
+  `discoverIn:`, `discoverNamespace:` and `withCoreCommands:` instead of
+  overriding properties. The `$hostCommands` argument is now `commands:`.
+- **Breaking:** the migrate commands and `db:seed` moved to
+  `denosyscore/database`, and `queue:work` to `denosyscore/queue`. This
+  package now requires only `denosyscore/container` and Symfony Console.
+- Adds `#[AsCommand]` for plain invokable commands, built only when they run;
+  `make:command` generates them.
+
 ## 0.15.0 – 2026-11-12
 
 - Released with the framework's 0.15 line; no changes to this package.

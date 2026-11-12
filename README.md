@@ -54,6 +54,37 @@ $console->add(new GreetCommand());
 exit($console->getSymfonyApplication()->run(new ArrayInput(['command' => 'greet', 'name' => 'Ada'])));
 ```
 
+
+## Attribute commands
+
+A command can be a plain invokable class. Its name, description and
+definition are read without building it, so `list` and `help` never resolve
+its dependencies:
+
+```php
+#[AsCommand('reports:send', 'Email the daily report')]
+final readonly class SendReports
+{
+    public function __construct(private ReportMailer $mailer) {}
+
+    public static function definition(): CommandDefinition   // optional
+    {
+        return (new CommandDefinition())->addOption('dry-run', null, CommandDefinition::OPTION_NONE, 'Print only');
+    }
+
+    public function __invoke(InputInterface $input, OutputInterface $output): int
+    {
+        // ...
+        return 0;
+    }
+}
+```
+
+`Kernel` is configured with constructor arguments and is not subclassed:
+`new Kernel($container, $basePath, commands: [...], discoverIn: 'app/Console/Commands')`.
+It registers this package's generators and cache commands, the commands you
+pass, and the commands it discovers.
+
 ## Included Modules
 
 - src/Console/*
