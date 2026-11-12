@@ -37,7 +37,6 @@ Build framework startup caches in the recommended order.
 This command runs:
   1. config:cache
   2. routes:cache
-  3. container:warmup
 HELP);
     }
 
@@ -48,7 +47,7 @@ HELP);
         $entryScript = $this->resolveEntryScript(is_string($entryOption) ? trim($entryOption) : '', $basePath);
         $phpBinary = \PHP_BINARY !== '' ? \PHP_BINARY : 'php';
 
-        $steps = ['config:cache', 'routes:cache', 'container:warmup'];
+        $steps = ['config:cache', 'routes:cache'];
 
         foreach ($steps as $step) {
             $output->comment("Running {$step}...");

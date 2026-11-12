@@ -69,8 +69,6 @@ abstract class Kernel
         \Denosys\Console\Command\DbSeedCommand::class,
         \Denosys\Console\Command\StubsPublishCommand::class,
         \Denosys\Console\Command\QueueWorkCommand::class,
-        \Denosys\Console\Command\ContainerWarmupCommand::class,
-        \Denosys\Console\Command\ContainerClearCommand::class,
         \Denosys\Console\Command\OptimizeCommand::class,
         \Denosys\Console\Command\OptimizeClearCommand::class,
         \Denosys\Console\Command\StartupBenchmarkCommand::class,

@@ -153,7 +153,7 @@ HELP);
         $output->newLine();
         $output->info('Scenario: uncached');
         $this->runMaintenanceCommands(
-            ['config:clear', 'routes:clear', 'container:clear'],
+            ['config:clear', 'routes:clear'],
             $basePath,
             $entryScript,
             $phpBinary
@@ -172,7 +172,7 @@ HELP);
         $output->newLine();
         $output->info('Scenario: cached');
         $this->runMaintenanceCommands(
-            ['config:cache', 'routes:cache', 'container:warmup'],
+            ['config:cache', 'routes:cache'],
             $basePath,
             $entryScript,
             $phpBinary

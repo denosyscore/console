@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.0 – 2026-11-12
+
+- **Breaking:** `container:warmup` and `container:clear` are removed with the
+  compiled container; `optimize`, `optimize:clear` and the startup benchmark
+  no longer run them.
+
 ## 0.12.0 – 2026-11-12
 
 - `migrate` and `migrate:rollback` read `app.env` through the

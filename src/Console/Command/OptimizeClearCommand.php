@@ -35,9 +35,8 @@ class OptimizeClearCommand implements CommandInterface
 Clear framework startup caches in reverse-safe order.
 
 This command runs:
-  1. container:clear
-  2. routes:clear
-  3. config:clear
+  1. routes:clear
+  2. config:clear
 HELP);
     }
 
@@ -48,7 +47,7 @@ HELP);
         $entryScript = $this->resolveEntryScript(is_string($entryOption) ? trim($entryOption) : '', $basePath);
         $phpBinary = \PHP_BINARY !== '' ? \PHP_BINARY : 'php';
 
-        $steps = ['container:clear', 'routes:clear', 'config:clear'];
+        $steps = ['routes:clear', 'config:clear'];
 
         foreach ($steps as $step) {
             $output->comment("Running {$step}...");
