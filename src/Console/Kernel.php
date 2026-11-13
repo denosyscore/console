@@ -27,7 +27,6 @@ final class Kernel
         Command\MakeCommandCommand::class,
         Command\MakeMiddlewareCommand::class,
         Command\MakeRequestCommand::class,
-        Command\MakeFactoryCommand::class,
         Command\MakeSeederCommand::class,
         Command\MakeMailCommand::class,
         Command\StubsPublishCommand::class,

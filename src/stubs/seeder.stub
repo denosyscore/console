@@ -17,7 +17,6 @@ class {{class}} extends Seeder
     public function run(): void
     {
         // Use factories to create data:
-        // UserFactory::new()->create(10);
         //
         // Or insert directly:
         // $this->insert('users', [

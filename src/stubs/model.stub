@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Denosys\Database\Record\Attributes\Table;
+use Denosys\Database\Record\Persists;
+use Denosys\Database\Record\Record;
+
+/**
+ * Public properties are columns: $firstName is stored in first_name, and
+ * its type (int, string, bool, DateTimeImmutable, a backed enum) converts
+ * the column value.
+ */
+#[Table('{{ table }}')]
+final class {{ class }} implements Record
+{
+    use Persists;
+
+    public ?int $id = null;
+}

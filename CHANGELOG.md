@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.21.0 – 2026-11-13
+
+### Changed (breaking)
+
+- `make:model` generates a `Record` using `Persists`. Its stub was missing,
+  so the command failed before.
+- `make:factory` and its stub are removed with the database package's model
+  factories.
+
 ## 0.20.0 – 2026-11-13
 
 - Released with the framework's 0.20 line. Requires its DenoSys dependencies
