@@ -5,7 +5,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.2",
-    "denosyscore/container": "^0.19",
+    "denosyscore/container": "^0.20",
     "symfony/console": "^7.4"
   },
   "autoload": {
@@ -28,7 +28,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-main": "0.19.x-dev"
+      "dev-main": "0.20.x-dev"
     }
   }
 }
